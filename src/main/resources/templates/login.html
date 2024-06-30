@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GreenBayEnergy</title>
+
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/webjars/bootstrap/5.1.3/css/bootstrap.min.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+
+	<div class="container-fluid login-bg-conatiner">
+		<div class="row justify-content-center align-items-center loginbg">
+
+			<div class="col-md-8">
+				<div class="login-form-container p-md-4 p-2 ">
+					<div class="logo mt-3">
+						<img th:src="@{/assest/cropped-LOGO-2-PNG-1.png}" alt="">
+					</div>
+					<div class="login-form-box w-100 mt-4">
+						<h1>Welcome back!</h1>
+						<h6 class="fs-5">Please log in to your account</h6>
+						<div th:if="${session.message != null}" id="popupMessage">
+							<div class="alert fade show"
+								th:classappend="${session.message.type == 'success'} ? 'alert-success ' : 'alert-danger '"
+								role="alert">
+								<div th:if="${session.message.type == 'success'}">
+									<strong><i class="bi bi-check-circle-fill me-2"></i>Hey! </strong><span
+										th:text="${session.message.text}"></span>
+								</div>
+								<div th:unless="${session.message.type == 'success'}">
+									<strong><i class="bi bi-x-circle-fill me-2"></i></i>Oops ! </strong><span
+										th:text="${session.message.text}"></span>
+								</div>
+								<button type="button" class="btn-close" data-bs-dismiss="alert"
+									aria-label="Close"></button>
+							</div>
+						</div>
+						<img th:src="@{/assest/Group 61.png}" alt="" class="d-block my-4 mx-auto img-fluid">
+
+						<div class="login-form">
+							<form method="POST" th:action="@{/api/auth/signin}" th:object="${loginRequest}">
+								<div class="row text-start gy-4 flex-column align-items-center justify-content-center">
+									<div class="col-md-12">
+										<label for="email" class="form-label">Email</label>
+										<input type="text" th:name="username" required class="form-control m-auto"
+											placeholder="Your email or username" aria-label="your email" id="email"
+											th:value="${emailUsername}">
+									</div>
+									<div class="col-md-12">
+										<label for="password" class="form-label">Password</label>
+										<div class="input-group">
+											<input type="password" th:name="password" class="form-control m-auto"
+												placeholder="Password" aria-label="password" id="password"
+												th:value="${password}">
+											<button type="button" class="btn btn-outline-secondary"
+												onclick="togglePasswordVisibility()">
+												<i id="eyeIcon" class="far fa-eye"></i>
+											</button>
+										</div>
+									</div>
+								</div>
+								<div class="d-flex justify-content-between mt-3 remember-password">
+									<div class="d-flex align-items-center"><input type="checkbox" th:name="rememberMe"
+											id="" class="me-2">Remember me</div>
+									<div><a href="/forgot-password/" class="ps-2 red-text signin">Forgot password</a>
+									</div>
+
+								</div>
+								<button type="submit" class="primary-btn mt-5 mb-4 mb-3 loginbtn ">Log in</button>
+							</form>
+							<p>Don't have an account?<a th:href="@{/organization/add-organization}"
+									class="ps-2 signin red-text">Signup</a> </p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Include Bootstrap JS (if you're using it for styling) -->
+	<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+	<script th:src="@{./js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{./js/main.js}"></script>
+</body>
+
+</html>

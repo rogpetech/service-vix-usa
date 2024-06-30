@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Service Category</h1>
+<a href="@{/organization}">Back To Organization Dashboard</a>
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Service Category</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="service, iteration : ${serviceCategories}">
+        <th scope="row" th:text="${iteration.index + 1}"></th>
+        <td th:text="${service.serviceCategoryName}"></td>
+        <td th:text="${service.activationStatus ? 'Active' : 'Inactive'}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

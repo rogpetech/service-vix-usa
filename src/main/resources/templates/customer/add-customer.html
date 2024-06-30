@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}">
+</head>
+
+<body>
+	<!--navbar-->
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="card data-cards ">
+					<div class="add-satff-container p-2">
+						<div class="data-cards-header">
+							<h4>Add Customer</h4>
+						</div>
+						<div class="data-cards-body mt-4" th:fragment="add-customer-form" id="field1">
+							<form class="row g-4" th:action="@{/customer/process-add}" method="post" id="customer-form">
+								<p class="section-heading">Personal Information</p>
+								<div class="col-xl-3 col-md-6" id="field2">
+
+									<label for="customer_name" class=" form-label">Customer
+										name<span style="color:red;">*</span></label> <input type="text"
+										class="form-control" id="customer_name" name="customerName">
+									<div class="error-message" id="name-error" style="color: red;"></div>
+								</div>
+								<div class="col-md-6 col-xl-3">
+									<label class="form-label">Contact person name</label>
+									<div class="multi-field">
+										<div class="input_and_select">
+											<div class="select">
+												<select class="selectpicker form-control" id="contact_per_name"
+													name="sel[]">
+													<option selected="selected">Select one</option>
+													<option value="1">Mr.</option>
+													<option value="2">Mrs.</option>
+												</select>
+											</div>
+											<input type="text" class="form-control " name="customerParentAccount">
+										</div>
+									</div>
+								</div>
+								<!-- <div class="col-md-6 col-xl-3">
+	                                    <label for="paren_acc" class="form-label">Parent Account Number</label>
+	                                    <input type="text" class="form-control" id="paren_acc">
+	                                </div> -->
+								<div class="col-md-6 col-xl-3">
+									<label for="acc_num" class="form-label">Account Number<span
+											style="color:red;">*</span></label>
+									<input type="number" class="form-control" id="acc_num" name="customerAccountNumber">
+									<div class="error-message" id="acc-num-error" style="color: red;"></div>
+								</div>
+								<div class="col-md-6 col-xl-3 me-5">
+									<label for="multi-mobile" class="form-label">Mobile<span
+											style="color:red;">*</span></label>
+									<div class="multi-field-wrapper">
+										<div class="multi-fields">
+											<div class="multi-field mb-2">
+												<div class="input_and_select">
+													<div class="select">
+														<select class="selectpicker form-control" id="multi-mobile"
+															name="contactNumberCategory0">
+															<option selected="selected" value="MOBILE">Mobile
+															</option>
+															<option value="HOME">Home</option>
+															<option value="WORK">Work</option>
+															<option value="OTHER">Other</option>
+														</select>
+													</div>
+													<input type="number" class="form-control " name="contactNumber0"
+														id="custMobile" oninput="validateMobile()">
+												</div>
+												<button type="button" class="remove-field ">
+													<img th:src="@{/assest/cross.svg}" class="img-icon" alt="">
+												</button>
+											</div>
+										</div>
+										<button type="button" class="add-field">
+											<img th:src="@{/assest/plus.svg}" class="img-icon" alt="">
+										</button>
+									</div>
+									<div class="error-message" id="mobile-error" style="color: red;"></div>
+								</div>
+								<div class="col-md-6 col-xl-3">
+									<label for="multi-email" class="form-label">Email<span
+											style="color:red;">*</span></label>
+									<div class="multi-field-wrapper">
+										<div class="multi-fields" id="multi-fields_email">
+											<div class="multi-field mb-2" id="multi-field_email">
+												<div class="input_and_select" id="customEmailInput">
+													<div class="select">
+														<select class="selectpicker form-control" id="multi-email"
+															name="emailCategory0">
+															<option value="PERSONAL">Personal</option>
+															<option value="BUSINESS">Business</option>
+															<option value="OTHER">Other</option>
+														</select>
+													</div>
+													<input type="text" class="form-control " name="email0"
+														id="custemail">
+												</div>
+												<button type="button" class="remove-field ">
+													<img th:src="@{/assest/cross.svg}" class="img-icon" alt="">
+												</button>
+											</div>
+										</div>
+										<button type="button" class="add-field">
+											<img th:src="@{/assest/plus.svg}" class="img-icon" alt="">
+										</button>
+									</div>
+									<div class="mt-1 error-message" id="msg" style="color: red;"></div>
+								</div>
+								<div class="row mt-4">
+									<div class="col-md-6 col-xl-3">
+										<label for="depart" class="form-label">Department</label>
+										<input type="text" class="form-control" id="depart"
+											name="primaryContactDepartment">
+
+									</div>
+									<div class="col-md-6 col-xl-3">
+										<label for="job_tit" class="form-label">Job title</label> <input type="text"
+											class="form-control" id="job_tit" name="primaryContactJobTitle">
+									</div>
+								</div>
+								<div class="row mt-4">
+									<div class="col-md-12">
+										<div class="switch-wrapper">
+											<label class="switch" for="bill_contact"> <input type="checkbox"
+													id="bill_contact" name="primaryContactIsBillingContact"> <span
+													class="slider round"></span>
+											</label>
+											<p class="m-0">Billing contact</p>
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="switch-wrapper">
+											<label class="switch" for="book_contact"> <input type="checkbox"
+													id="book_contact" name="primaryContactIsBookingContact"> <span
+													class="slider round"></span>
+											</label>
+											<p class="m-0">Booking contact</p>
+										</div>
+									</div>
+								</div>
+								<div class="heading_plusbutton justify-content-between d-flex align-items-center mt-5">
+									<p class="section-heading">Stored service location</p>
+									<button type="button" class="add_loaction">
+										<img th:src="@{/assest/plus_circle.png}" alt="">Add
+										Location
+									</button>
+								</div>
+
+								<div class="location-fields row g-4 position-relative" id="location-fields">
+									<div class="col-md-6 col-xl-3">
+										<label for="location_name" class="form-label">Location
+											nickname</label> <input type="text" class="form-control" id="location_name"
+											name="locationNickName0">
+										<div class="error-message" id="location-name-error"></div>
+									</div>
+									<div class="col-md-6 col-xl-3">
+										<label for="apt_suite" class="form-label">Apt/suite/unit</label>
+										<input type="text" class="form-control" id="apt_suite" name="unit0">
+									</div>
+									<div class="col-md-6 col-xl-3">
+										<label for="loca_address" class="form-label">Address</label>
+
+										<input type="text" class="form-control" id="loca_address" name="address0">
+									</div>
+									<div class="col-md-6 col-xl-3">
+										<label for="locat_city" class="form-label">City</label>
+										<input type="text" class="form-control" id="locat_city" name="city0">
+									</div>
+									<div class="col-md-6 col-xl-3">
+										<label for="locat_state" class="form-label">State/Zip</label>
+
+										<input type="text" class="form-control" id="locat_state" name="state0">
+									</div>
+									<div class="row mt-4">
+										<div class="col-md-12">
+											<div class="switch-wrapper">
+												<label class="switch" for="prim_location"> <input type="checkbox"
+														id="prim_location" name="isPrimaryLocation0"> <span
+														class="slider round"></span>
+												</label>
+												<p class="m-0">Primary location</p>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div class="switch-wrapper">
+												<label class="switch" for="bill_address"> <input type="checkbox"
+														id="bill_address" name="isBillingAddress0">
+													<span class="slider round"></span>
+												</label>
+												<p class="m-0">Billing address</p>
+											</div>
+										</div>
+									</div>
+									<button type="button" class="delete-location">
+										<img th:src="@{/assest/trash.svg}" class="img-icon" alt="">Delete
+									</button>
+								</div>
+								<p class="mt-5 section-heading">Additional information</p>
+								<div class="col-xl-3 col-md-6">
+									<label for="ref_source" class="form-label">Referral
+										source</label>
+
+									<input type="text" class="form-control" id="ref_source" name="referalSource">
+								</div>
+
+								<div class="col-xl-3 col-md-6">
+									<label for="customer_name" class=" form-label">Industry</label>
+									<input type="text" class="form-control" id="customer_indus" name="customerIndustry">
+
+								</div>
+								<div class="col-md-6 col-xl-3 ">
+									<label for="select_currency" class="form-label">Default
+										currency</label> <select class="selectpicker form-control" id="select_currency"
+										name="currency">
+										<option selected="selected">Select one</option>
+										<option th:each="currency : ${currencies}" th:value="${currency}"
+											th:text="${currency}"></option>
+									</select>
+								</div>
+								<div class="col-md-6 col-xl-3">
+									<label for="businessid" class="form-label">Business
+										number/Tax ID</label> <input type="text" class="form-control" id="businessid"
+										name="buisnessNumber">
+								</div>
+								<div class="col-md-6 col-xl-3">
+									<label class="form-label">Assigned salesperson</label> <select
+										class="selectpicker form-control" id="select_indus" name="salesPersonId">
+										<option th:each="salesPerson : ${salesPersons}"
+											th:value="${salesPerson.salesPersonId}"
+											th:text="${salesPerson.salesPersonName}"></option>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<label for="inpexpiry" class="form-label">Internal/Private
+										notes</label>
+									<textarea class="form-control custom-area" id="inpexpiry" rows="3"
+										name="privateNotes"></textarea>
+								</div>
+								<div class="col-12">
+									<div class="form-submit">
+										<a th:href="@{/customer/customers}" class="secondary-btn form-btns me-3 "
+											id="mainPageCancel">Cancel</a>
+										<button type="submit" class="primary-btn form-btns add-cust">Add
+											Customer</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/initializeDataTables.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+
+	<script type="text/javascript">
+
+
+
+
+		$("#custemail").on("keyup", function (e) {
+			var email = $('#custemail').val();
+			if ($('#custemail').val() == null || $('#custemail').val() == "") {
+				$('#msg').show();
+				$("#msg").html("email is a required field.").css("color", "red");
+			} else {
+				var regex =
+					/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				if (!regex.test(email)) {
+					$('#msg').show();
+					$("#msg").html("Invalid Email").css("color", "red");
+					return;
+				}
+				$.ajax({
+					type: 'GET',
+					url: '/customer/searchByEmail/' + email,
+					cache: false,
+					success: function (msg) {
+						$('#msg').show();
+						$.each(msg, function (index, value) {
+							console.log(value)
+							console.log(index)
+							if (value === 'Email already exists') {
+								$("#msg").html(value).css("color", "red");
+							} else {
+								$("#msg").html(value).css("color", "green");
+							}
+						});
+
+
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						alert("fail");
+						$('#msg').show();
+						$("#msg").html(textStatus + " " + errorThrown).css("color", "red");
+					}
+				});
+			}
+		});
+
+	</script>
+
+	<script>
+
+		$(document).ready(function () {
+
+			$("#customer-form").submit(function (event) {
+				$(".error-message").empty();
+
+				var customerName = $("#customer_name").val();
+				var accuntNumber = $("#acc_num").val();
+				var mobileNumber = $("#custMobile").val();
+				var customerEmail = $("#custemail").val();
+				var customerLocation = $("#location_name").val();
+				var customerCity = $("#custemail").val();
+				var valid = true;
+
+				if (customerName === "") {
+					$("#name-error").text("Name is required");
+					valid = false;
+				}
+				if (accuntNumber === "") {
+					$("#acc-num-error").text("Account number is required");
+					valid = false;
+				}
+				if (mobileNumber === "") {
+					$("#mobile-error").text("Mobile number is required");
+					valid = false;
+				}
+				if (customerEmail === "") {
+					$("#msg").text("Email is required");
+					valid = false;
+				}
+				if (!valid) {
+					event.preventDefault();
+				}
+			});
+
+			$("#customer_name").focus(function () {
+				$("#name-error").empty();
+			});
+			$("#acc_num").focus(function () {
+				$("#acc-num-error").empty();
+			});
+			$("#custMobile").focus(function () {
+				$("#mobile-error").empty();
+			});
+			$("#customerEmail").focus(function () {
+				$("#msg").empty();
+			});
+		});
+
+	</script>
+	<script>
+
+		/* Validation for staff mobile*/
+		function validateMobile() {
+			debugger;
+			var mobile = document.getElementById("custMobile").value;
+			var mobilePattern = /^\d{10}$/;
+			var mobileError = document.getElementById("mobile-error");
+			if (!mobilePattern.test(mobile)) {
+				mobileError.textContent = "Invalid mobile number";
+				$('.add-cust').prop('disabled', true).css('opacity', 0.5);
+			}
+			else {
+				mobileError.textContent = "";
+				$('.add-cust').prop('disabled', false).css('opacity', 1.0);
+			}
+		}
+	</script>
+
+</body>
+
+</html>

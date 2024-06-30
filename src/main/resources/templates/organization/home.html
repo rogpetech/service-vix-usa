@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}">
+
+</head>
+
+<body>
+	<!--navbar-->
+
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+
+			<!-- datacards -->
+
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<!-- ----------Message Area-------- -->
+				<div class="mt-2" th:if="${session.message}">
+					<div class="alert alert-success alert-dismissible fade show"
+						th:classappend="${session.message.type == 'success'} ? 'alert-success ' : 'alert-danger '"
+						role="alert">
+						<div th:if="${session.message.type == 'success'}">
+							<strong><i class="bi bi-check-circle-fill me-2"></i>Hey! </strong><span
+								th:text="${session.message.text}"></span>
+						</div>
+						<div th:unless="${session.message.type == 'success'}">
+							<strong><i class="bi bi-x-circle-fill me-2"></i></i>Oops ! </strong><span
+								th:text="${session.message.text}"></span>
+						</div>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+				</div>
+				<!-- ----------Message Area End-------- -->
+				<div class="row">
+					<div class="col-xxl-3 col-xl-4 col-md-6 mb-2 mb-xxl-0">
+						<div class="card data-cards">
+							<p>Total Customers</p>
+							<div class="data-numbers d-flex justify-content-between">
+								<h3>163</h3>
+								<div class="data-legends">
+									<div class="plan mb-3">
+										<div class="active-legend">
+											<span class="green-legend"></span>
+											<p>Active</p>
+										</div>
+										<p class="fw-bold">46</p>
+									</div>
+									<div class="plan">
+										<div class="active-legend new">
+											<span class="green-legend orange-legend"></span>
+											<p>New</p>
+										</div>
+										<p class="fw-bold">12</p>
+									</div>
+								</div>
+							</div>
+							<p><i class="fa-solid fa-arrow-up text-success me-2"></i>14% vs last month</p>
+						</div>
+					</div>
+					<div class="col-xxl-3 col-xl-4 col-md-6 mb-2 mb-xl-0">
+						<div class="card data-cards">
+							<p>Total Estimates</p>
+							<div class="data-numbers d-flex justify-content-between">
+								<h3>58</h3>
+								<div class="data-legends">
+									<div class="plan mb-3">
+										<div class="active-legend">
+											<span class="green-legend"></span>
+											<p>Won</p>
+										</div>
+										<p class="fw-bold">38</p>
+									</div>
+									<div class="plan">
+										<div class="active-legend new">
+											<span class="green-legend orange-legend"></span>
+											<p>Lost</p>
+										</div>
+										<p class="fw-bold">12</p>
+									</div>
+								</div>
+							</div>
+							<p><i class="fa-solid fa-arrow-up text-success me-2"></i>14% vs last month</p>
+						</div>
+					</div>
+					<div class="col-xxl-3 col-xl-4 col-md-6 mb-2 mb-xl-0">
+						<div class="card data-cards">
+							<p>Total Jobs</p>
+							<div class="data-numbers d-flex justify-content-between">
+								<h3>82</h3>
+								<div class="data-legends">
+									<div class="plan mb-3">
+										<div class="active-legend">
+											<span class="green-legend"></span>
+											<p>Invoiced</p>
+										</div>
+										<p class="fw-bold">46</p>
+									</div>
+									<div class="plan">
+										<div class="active-legend new">
+											<span class="green-legend orange-legend"></span>
+											<p>Dispatched</p>
+										</div>
+										<p class="fw-bold">12</p>
+									</div>
+								</div>
+							</div>
+							<p><i class="fa-solid fa-arrow-up text-success me-2"></i>14% vs last month</p>
+						</div>
+					</div>
+					<div class="col-xxl-3 col-xl-4 col-md-6 mb-2 mb-xl-0">
+						<div class="card data-cards">
+							<p>Total Projects</p>
+							<div class="data-numbers d-flex justify-content-between">
+								<h3>202</h3>
+								<div class="data-legends">
+									<div class="plan">
+										<div class="active-legend">
+											<span class="green-legend"></span>
+											<p>In progress</p>
+										</div>
+										<p class="fw-bold">46</p>
+									</div>
+									<div class="plan">
+										<div class="active-legend new">
+											<span class="green-legend orange-legend"></span>
+											<p>Hold</p>
+										</div>
+										<p class="fw-bold">12</p>
+									</div>
+									<div class="plan">
+										<div class="active-legend new">
+											<span class="green-legend black-legend"></span>
+											<p>Closed</p>
+										</div>
+										<p class="fw-bold">12</p>
+									</div>
+								</div>
+							</div>
+							<p><i class="fa-solid fa-arrow-up text-success me-2"></i>14% vs last month</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- graphs&upcommingjobs -->
+				<div class="row py-xl-3">
+					<div class="col-xl-8 mb-2 mb-xl-0">
+						<div class="card data-cards h-100">
+							<div class="data-cards-header p-2">
+								<h5>Average revenue / Job</h5>
+							</div>
+							<div id="avg-revenu-chart"></div>
+						</div>
+					</div>
+					<div class="col-xl-4 mb-2 mb-xl-0">
+						<div class="card data-cards">
+							<div class="data-cards-header p-2">
+								<h5>Job / Estimate Channels</h5>
+							</div>
+							<div id="chart"></div>
+						</div>
+					</div>
+				</div>
+
+				<!-- heatmap&radargraph -->
+
+				<div class="row pb-4">
+					<div class="col-xl-8 mb-2 mb-xl-0">
+						<div class="card data-cards h-100">
+							<div class="data-cards-header p-2">
+								<h5>Estimate & Job heatmap</h5>
+							</div>
+							<img th:src="@{/assest/heatmap.png}" class="img-fluid" alt="">
+						</div>
+					</div>
+					<div class="col-xl-4">
+						<div class="card data-cards">
+							<div class="upcomming-jobs-container p-2">
+								<div class="data-cards-header">
+									<h5>Upcoming Jobs</h5>
+								</div>
+								<div class="data-cards-body mt-4">
+									<div class="jobs-item mb-2">
+										<div class="customer-job">
+											<!-- <div class="job-pro"></div> -->
+											<div class="job-deatils">
+												<h6><img th:src="@{/assest/user.svg}" class="img-icon"
+														alt="My Account">Marisa Fair</h6>
+												<p class="label-color"><img th:src="@{/assest/marker.svg}"
+														class="img-icon" alt="">Plaistow, NH 03865</p>
+											</div>
+										</div>
+										<div class="job-data text-end">
+											<p><a href="#">#3039</a></p>
+											<p>$22297.16</p>
+											<p>01/12/2023 (created)</p>
+										</div>
+									</div>
+									<div class="jobs-item mb-2">
+										<div class="customer-job">
+											<!-- <div class="job-pro"></div> -->
+											<div class="job-deatils">
+												<h6><img th:src="@{/assest/user.svg}" class="img-icon"
+														alt="My Account">Marisa Fair</h6>
+												<p class="label-color"><img th:src="@{/assest/marker.svg}"
+														class="img-icon" alt="">Plaistow, NH 03865</p>
+											</div>
+										</div>
+										<div class="job-data text-end">
+											<p><a href="#">#3039</a></p>
+											<p>$22297.16</p>
+											<p>01/12/2023 (created)</p>
+										</div>
+									</div>
+									<div class="jobs-item mb-2">
+										<div class="customer-job">
+											<!-- <div class="job-pro"></div> -->
+											<div class="job-deatils">
+												<h6><img th:src="@{/assest/user.svg}" class="img-icon"
+														alt="My Account">Marisa Fair</h6>
+												<p class="label-color"><img th:src="@{/assest/marker.svg}"
+														class="img-icon" alt="">Plaistow, NH 03865</p>
+											</div>
+										</div>
+										<div class="job-data text-end">
+											<p><a href="#">#3039</a></p>
+											<p>$22297.16</p>
+											<p>01/12/2023 (created)</p>
+										</div>
+									</div>
+									<div class="jobs-item mb-2">
+										<div class="customer-job">
+											<!-- <div class="job-pro"></div> -->
+											<div class="job-deatils">
+												<h6><img th:src="@{/assest/user.svg}" class="img-icon"
+														alt="My Account">Marisa Fair</h6>
+												<p class="label-color"><img th:src="@{/assest/marker.svg}"
+														class="img-icon" alt="">Plaistow, NH 03865</p>
+											</div>
+										</div>
+										<div class="job-data text-end">
+											<p><a href="#">#3039</a></p>
+											<p>$22297.16</p>
+											<p>01/12/2023 (created)</p>
+										</div>
+									</div>
+									<div class="jobs-item mb-2">
+										<div class="customer-job">
+											<!-- <div class="job-pro"></div> -->
+											<div class="job-deatils">
+												<h6><img th:src="@{/assest/user.svg}" class="img-icon"
+														alt="My Account">Marisa Fair</h6>
+												<p class="label-color"><img th:src="@{/assest/marker.svg}"
+														class="img-icon" alt="">Plaistow, NH 03865</p>
+											</div>
+										</div>
+										<div class="job-data text-end">
+											<p><a href="#">#3039</a></p>
+											<p>$22297.16</p>
+											<p>01/12/2023 (created)</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/webjars/bootstrap/5.1.3/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/initializeDataTables.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

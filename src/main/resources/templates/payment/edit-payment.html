@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}">
+</head>
+
+<body>
+	<!--navbar-->
+
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="card data-cards">
+					<div class="container-fluid">
+						<div class="main-table">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="row">
+										<div class="d-flex hed-3">
+											<span class="payment-heading">Edit Payment#1369876</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-5 mt-4">
+										<div class="d-flex">
+											<div class="col-md-4 customer">
+												<h5>From Customer</h5>
+											</div>
+											<div class="col-md-8">
+												<select class="form-select" aria-label="Default select example">
+													<option selected>Tyler Waymouth</option>
+													<option value="1">One</option>
+													<option value="2">Two</option>
+													<option value="3">Three</option>
+												</select>
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-8 table-new mt-4">
+										<table class="payment-table">
+											<thead>
+												<tr>
+													<th>Process Transaction</th>
+												</tr>
+											</thead>
+											<tbody class="payment-body">
+												<tr>
+													<td style="padding: 10px;">
+														<div class="row">
+															<div class="col-md-3 customer">
+																<span class="methods">Received on:</span>
+															</div>
+															<div class="col-md-3">
+																<div class="input-group mb-3">
+																	<input type="text" placeholder="12/09/2023"
+																		class="form-control"
+																		aria-label="Recipient's username"
+																		aria-describedby="basic-addon2">
+																	<span class="input-group-text" id="basic-addon2"><i
+																			class="fa-solid fa-calendar"></i></span>
+																</div>
+															</div>
+														</div>
+														<div class="row mt-4">
+															<div class="col-md-3 customer">
+
+																<span class="methods">Payment Method:</span>
+															</div>
+															<div class="col-md-6">
+																<select class="form-select"
+																	aria-label="Default select example">
+																	<option selected>Check</option>
+																	<option value="1">One</option>
+																	<option value="2">Two</option>
+																	<option value="3">Three</option>
+																</select>
+															</div>
+														</div>
+														<div class="row mt-4">
+															<div class="col-md-3 customer">
+
+																<span class="methods">Check/Reference#:</span>
+															</div>
+															<div class="col-md-3">
+																<div class="form-group">
+																	<input type="password" class="form-control"
+																		id="exampleInputPassword1" placeholder="7866">
+																</div>
+															</div>
+														</div>
+														<div class="row mt-4">
+															<div class="col-md-3 customer">
+
+																<span class="methods">Payments Memo:</span>
+															</div>
+															<div class="col-md-8">
+																<select class="form-select"
+																	aria-label="Default select example">
+																	<option selected></option>
+																	<option value="1">One</option>
+																	<option value="2">Two</option>
+																	<option value="3">Three</option>
+																</select>
+															</div>
+														</div>
+														<div class="row mt-4">
+															<div class="col-md-3 customer">
+																<span class="methods">Received By:</span>
+															</div>
+															<div class="col-md-3">
+																<div class="form-group">
+																	<input type="password" class="form-control"
+																		id="exampleInputPassword1" placeholder="DV">
+																</div>
+															</div>
+														</div>
+														<div class="row mt-4">
+															<div class="col-md-11 box2">
+																<div class="d-flex">
+																	<div class="col-md-5 customer">
+																		<h5>Amount</h5>
+																	</div>
+																	<div class="col-md- customer">
+																		<div class="input-group mb-3">
+																			<span class="input-group-text"
+																				id="basic-addon1">$</span>
+																			<input type="text" class="form-control"
+																				placeholder="5,364"
+																				aria-label="Username"
+																				aria-describedby="basic-addon1">
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+							<div class="row mt-5">
+								<div class="col-md-12">
+									<table class="payment-table second-table2">
+										<thead>
+											<tr>
+												<th>Invoice Date</th>
+												<th>Invoice#</th>
+												<th>Customer</th>
+												<th>Description</th>
+												<th>Invoice Amount Due</th>
+												<th>Applied Amount</th>
+												<th>Balance</th>
+											</tr>
+										</thead>
+										<tbody class="payment-body">
+											<tr class="second-row">
+												<td class="second-type">01/09/2022</td>
+												<td class="second-type"><span class="c33">3021</span></td>
+												<td class="second-type"><span class="c33">Tyler Waymouth</span></td>
+												<td class="second-type">For Job(s):<span class="c33">3038</span></td>
+												<td class="second-type"><b>$00</b></td>
+												<td class="second-type"><b>$5,374.20</b></td>
+												<td class="second-type"><b>$0</b></td>
+											</tr>
+											<tr>
+												<td colspan="6" class="right-side "><span class="methods2">Total
+														Outstainding</span></td>
+												<td><b>$0</b></td>
+
+											</tr>
+											<tr class="third-row">
+												<td colspan="6" class="right-side "><span class="methods2 a3">Amount of
+														Payment</span></td>
+												<td style="color: green;"><b>$5,364.00</b></td>
+
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="row mt-5">
+								<div class="col-md-12">
+									<div class="btn2">
+										<button class="main-btn">
+											<h6>Void Payment</h6>
+										</button>
+										<button class="main-btn2">
+											<h6>Save Changes</h6>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/initializeDataTables.js}"></script>
+	<script th:src="@{/js/invoice.js}"></script>
+</body>
+
+</html>

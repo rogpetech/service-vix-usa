@@ -1,0 +1,86 @@
+
+	<div class="leftnavbar " th:fragment="sidebar">
+		<img th:src="@{/assest/cross.svg}" class="img-icon close-navbar d-block d-sm-none" onclick="togglesidebar()"
+			alt="close-icon">
+
+		<div class="custmFlex">
+			<div id="toggle" class="col-md-1">
+				<button onclick="togglesidebar()">
+					<img th:src="@{/assest/humberger-menu.png}" class="img-fluid" alt="icon">
+				</button>
+			</div>
+			<div class="logo-img text-center my-4">
+				<a th:href="@{/dashboard/organization}"><img th:src="@{/assest/brandlogo.png}"
+						style="width: 70%; height: 50% !important; max-width: 70%; max-height: 50% !important;"
+						class="logo-full img-fluid d-none d-md-block m-auto" alt="logo"></a>
+				<!--<a th:href="@{/dashboard/organization}"><img th:src="@{/assest/brand-logo-collapse.png}"
+				class="logo-ex d-block d-md-none m-auto" alt="logo"></a>-->
+			</div>
+		</div>
+		<div class="navbar_Sec">
+		<ul class="navlist ">
+			<li class="navLink"><a th:href="@{/dashboard/organization}" class="nav-menu"> <img th:src="@{/assest/apps.svg}"
+						class="icons" alt="icon"> <span class="text">Dashboard</span>
+				</a></li>
+			<li class="has-ul position-relative navLink"><a>
+					<img th:src="@{/assest/city.svg}" class="icons" alt="icon">
+					<span class="text">My Office</span>
+				</a>
+				<ul class="sub-ul" style="margin-left: 8%;">
+					<li class="navLink">
+						<a th:href="@{/workforce/staffList}"  class="nav-menu"> <img th:src="@{/assest/album-circle-user.svg}"
+								class="icons" alt="icon"> <span class="text">Workforce</span>
+						</a>
+					</li>
+					<li class="navLink" sec:authorize="hasAuthority('PRODUCT_AND_SERVICE')">
+						<a th:href="@{/product/products}"  class="nav-menu"> <img th:src="@{/assest/wrench-simple.svg}" class="icons"
+								alt="icon">
+							<span class="text">Product & Services</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<li sec:authorize="hasAuthority('CUSTOMER')" class="navLink">
+				<a th:href="@{/customer/customers}"  class="nav-menu"> <img th:src="@{/assest/users-alt.svg}" class="icons" alt="icon">
+					<span class="text">Customer</span>
+				</a>
+			</li>
+			<li sec:authorize="hasAuthority('ESTIMATE')" class="navLink">
+				<a th:href="@{/estimate/estimates}"  class="nav-menu"> <img th:src="@{/assest/list-check.svg}" class="icons" alt="icon">
+					<span class="text">Estimates</span>
+				</a>
+			</li>
+			<li sec:authorize="hasAuthority('INVOICE')" class="navLink">
+				<a th:href="@{/invoice/invoices}"  class="nav-menu"> <img th:src="@{/assest/file-invoice-dollar.svg}" class="icons"
+						alt="icon"> <span class="text">Invoices</span>
+				</a>
+			</li>
+			<li sec:authorize="hasAuthority('JOB')" class="navLink">
+				<a th:href="@{/job/jobs}"  class="nav-menu"> <img th:src="@{/assest/briefcase.svg}" class="icons" alt="icon">
+					<span class="text">Jobs</span>
+				</a>
+			</li>
+			<li class="navLink">
+				<a th:href="@{/project/projectList}"  class="nav-menu"> <img th:src="@{/assest/folder-open.svg}" class="icons" alt="icon">
+					<span class="text">Projects</span>
+				</a>
+			</li>
+			<li class="navLink">
+				<a th:href="@{/dispatch/dispatchList}"  class="nav-menu"> <img th:src="@{/assest/add-folder.svg}" class="icons"
+						alt="icon">
+					<span class="text">Dispatch</span>
+				</a>
+			</li>
+			<li class="navLink">
+				<a th:href="@{/calendar/calendarList}"  class="nav-menu"> <img th:src="@{/assest/calendar-clock.svg}" class="icons"
+						alt="icon">
+					<span class="text">Calendar</span>
+				</a>
+			</li>			
+		</ul>
+		</div>
+
+		<!--navbarend-->
+
+		<!--main-->
+	</div>

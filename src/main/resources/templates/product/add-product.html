@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/css/addproduct-cdn.css}">
+</head>
+
+<body>
+	<!--navbar-->
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+			<div class="card">
+				<div class="modal-body">
+					<div th:fragment="product-card">
+						<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+							<div class="row h-100">
+								<div class="col-12">
+									<div class="card data-cards h-100">
+										<div class="add-satff-container p-2">
+											<div class="data-cards-header">
+												<h4>Add Product</h4>
+											</div>
+											<div class="data-cards-body mt-4">
+												<form class="row g-4" id="form_prodct"
+													th:action="@{/product/process-add}" method="post"
+													enctype="multipart/form-data" onsubmit="formatPrices()">
+													<p class="section-heading">Product Information</p>
+													<div class="col-md-6">
+														<div class="input_field">
+															<label for="inpproduct" class="form-label">Product
+																Name<span style="color:red;">*</span></label>
+															<input type="text" class="form-control" id="inpproduct"
+																name="productName">
+															<!--<i class="fas fa-check-circle"></i>
+															<i class="fas fa-exclamation-circle"></i>
+															<small>Error message</small>-->
+														</div>
+														<div class="error-message" id="productName-error"
+															style="color: red;"></div>
+													</div>
+													<div class="col-md-6">
+														<label for="select_product_cat" class="form-label">Product
+															Category<span style="color:red;">*</span></label>
+														<select class="selectpicker form-control"
+															id="select_product_cat" name="productCategoryId">
+															<option value="" selected="selected">Select one</option>
+															<option th:each="productCat : ${productCategories}"
+																th:value="${productCat.productCategoryId}"><span
+																	th:text="${productCat.productCategoryName}"></span>
+															</option>
+														</select>
+														<div class="error-message" id="productCat-Name-error"
+															style="color: red;"></div>
+													</div>
+													<div class="col-md-6">
+														<label for="inpwork" class="form-label">Description<span
+																style="color:red;">*</span></label>
+														<textarea class="form-control custom-area" id="inpwork" rows="3"
+															name="discription"></textarea>
+														<div class="error-message" id="description-error"
+															style="color: red;"></div>
+													</div>
+													<div class="col-md-6 position-relative">
+														<label class="form-label">Product Images</label>
+														<div class="upload__box">
+															<div class="upload__img-wrap"></div>
+															<div class="upload__btn-box">
+																<label class="upload__btn primary-btn">Upload
+																	images <input type="file" multiple=""
+																		data-max_length="20" class="upload__inputfile"
+																		name="categoryImage" accept="image/*">
+																</label>
+															</div>
+														</div>
+													</div>
+													<p class="mt-5 section-heading">Sales & Purchasing
+														Details</p>
+													<div class="col-md-6 col-xl-3">
+														<div class="input_field">
+															<label for="reg_price" class="form-label">Regular
+																Price($)<span style="color:red;">*</span></label>
+															<input type="text" class="form-control" id="reg_price"
+																placeholder="0.00" name="regularPrice" step="0.01"
+																oninput="updateHiddenField(this, 'reg_price')">
+															<!--<i class="fas fa-check-circle"></i>
+															<i class="fas fa-exclamation-circle"></i><small>Error
+																message</small>-->
+														</div>
+														<div class="error-message" id="regularPrice-error"
+															style="color: red;"></div>
+													</div>
+													<div class="col-md-6 col-xl-3">
+														<div class="input_field">
+															<label for="mem_price" class="form-label">Member
+																Price($)<span style="color:red;">*</span></label> <input
+																type="text" class="form-control" id="mem_price"
+																placeholder="0.00" name="memberPrice"
+																oninput="updateHiddenField(this, 'mem_price')">
+															<!--<i class="fas fa-check-circle"></i> <i
+																class="fas fa-exclamation-circle"></i> <small>Error
+																message</small>-->
+														</div>
+														<div class="error-message" id="memberPrice-error"
+															style="color: red;"></div>
+													</div>
+													<div class="col-md-6 col-xl-3">
+														<div class="input_field">
+															<label for="avg_cost" class="form-label">Average
+																Cost($)<span style="color:red;">*</span></label> <input
+																type="text" class="form-control" id="avg_cost"
+																placeholder="0.00" name="averageCost" step="0.01"
+																oninput="updateHiddenField(this, 'avg_cost')">
+															<!--<i class="fas fa-check-circle"></i> <i
+																class="fas fa-exclamation-circle"></i> <small>Error
+																message</small>-->
+														</div>
+														<div class="error-message" id="averageCost-error"
+															style="color: red;"></div>
+													</div>
+													<div class="col-12">
+														<div class="form-submit">
+															<button type="button" class="secondary-btn form-btns me-3"
+																id="cancelButton">Cancel</button>
+															<button type="submit" class="primary-btn form-btns">Add
+																Product</button>
+														</div>
+													</div>
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/addproduct-js.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<!-- <script th:src="@{/js/form_validations.js}"></script> -->
+	<script>
+		document.getElementById("cancelButton").addEventListener("click", function () {
+			// Replace "destination-page.html" with the URL of the page you want to redirect to
+			window.location.href = "products";
+		});
+	</script>
+
+	<script>
+
+		$(document).ready(function () {
+
+			$("#form_prodct").submit(function (event) {
+				$(".error-message").empty();
+
+				var productName = $("#inpproduct").val();
+				var productCategoryName = $("#select_product_cat").val();
+				var description = $("#inpwork").val();
+				var regularPrice = $("#reg_price").val();
+				var memberPrice = $("#mem_price").val();
+				var averageCost = $("#avg_cost").val();
+
+				var valid = true;
+
+				if (productName === "") {
+					$("#productName-error").text("product name is required");
+					valid = false;
+				}
+				if (description === "") {
+					$("#description-error").text("description is required");
+					valid = false;
+				}
+				if (productCategoryName === "") {
+					$("#productCat-Name-error").text("product category is required");
+					valid = false;
+				}
+				if (regularPrice === "") {
+					$("#regularPrice-error").text("regular price is required");
+					valid = false;
+				}
+				if (memberPrice === "") {
+					$("#memberPrice-error").text("member price is required");
+					valid = false;
+				}
+				if (averageCost === "") {
+					$("#averageCost-error").text("average cost is required");
+					valid = false;
+				}
+				if (!valid) {
+					event.preventDefault();
+				}
+			});
+
+			$("#inpproduct").focus(function () {
+				$("#productName-error").empty();
+			});
+			$("#inpwork").focus(function () {
+				$("#description-error").empty();
+			});
+			$("#select_product_cat").focus(function () {
+				$("#productCat-Name-error").empty();
+			});
+			$("#reg_price").focus(function () {
+				$("#regularPrice-error").empty();
+			});
+			$("#mem_price").focus(function () {
+				$("#memberPrice-error").empty();
+			});
+			$("#avg_cost").focus(function () {
+				$("#averageCost-error").empty();
+			});
+		});
+	</script>
+
+	<script>
+		function updateHiddenField(input, hiddenFieldId) {
+			// Remove any non-numeric characters
+			let value = input.value.replace(/[^0-9.]/g, '');
+
+			// Update the hidden field
+			document.getElementById(hiddenFieldId).value = value;
+
+			// Remove any previous formatting
+			value = input.value.replace(/[^0-9.]/g, '');
+
+			// Format the value with commas and a dollar sign
+
+			value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			value = "$" + value;
+
+			// Update the input field
+			input.value = value;
+		}
+	</script>
+
+
+
+
+	<script>
+
+		function formatPrices() {
+
+			let avgCostStr = document.getElementById("avg_cost");
+			let mem_privceStr = document.getElementById("mem_price");
+			let regPriceStr = document.getElementById("reg_price");
+			avgCostStr.value = avgCostStr.value.replace(/[$,]/g, '');
+			mem_privceStr.value = mem_privceStr.value.replace(/[$,]/g, '');
+			regPriceStr.value = regPriceStr.value.replace(/[$,]/g, '');
+			alert(originalPriceStr);
+			return false;
+
+		}
+
+	</script>
+</body>
+
+</html>

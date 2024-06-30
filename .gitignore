@@ -1,0 +1,51 @@
+# Arquivos e diretórios do Maven
+target/
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# Arquivos e diretórios do IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Arquivos e diretórios do Eclipse
+.classpath
+.factorypath
+.project
+.settings/
+
+# Arquivos do VS Code
+.vscode/
+
+# Arquivos de configuração do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de cache do sistema
+.apt_generated_tests/
+.metadata/
+
+# Arquivos de configuração de ferramentas
+.tool-versions
+
+# Arquivos de log
+*.log
+
+# Arquivos temporários
+*.tmp
+*.swp
+*.bak
+*.old
+
+# Arquivos de ambiente específico
+.env
+
+# Arquivos de backup
+*.bak
+*.backup
+D:/
