@@ -1,14 +1,23 @@
-# Use uma imagem base do Java
-FROM openjdk:17-jdk-alpine
-
-# Define o diretório de trabalho dentro do container
+# Etapa 1: Build da aplicação
+FROM maven:3.8.6-openjdk-17 AS build
 WORKDIR /app
 
-# Copia o arquivo JAR para o container
-COPY target/servicevix.jar /app/app.jar
+# Copia o arquivo de configuração do Maven
+COPY .mvn/ .mvn
+COPY mvnw .
+COPY pom.xml .
 
-# Expõe a porta que a aplicação vai usar
+# Copia o código-fonte da aplicação
+COPY src ./src
+
+# Compila a aplicação
+RUN ./mvnw clean package -DskipTests
+
+# Etapa 2: Execução da aplicação
+FROM openjdk:17-jdk-slim
+VOLUME /tmp
+COPY --from=build /app/target/*.jar app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
+
+# Exponha a porta usada pela aplicação (substitua 8080 pela porta correta, se necessário)
 EXPOSE 8080
-
-# Define o comando para rodar a aplicação
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
