@@ -3,9 +3,9 @@ spring:
   #Database Configuration
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.0.0.52:3306/Greenbayenergy_QA?createDatabaseIfNotExist=true
-    username: greenbayenergy
-    password: Greenbayenergy@123
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
 #Email Cnfiguration 
   mail:
     host: smtp.gmail.com
