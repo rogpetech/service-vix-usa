@@ -4,7 +4,7 @@ FROM maven:3.8.4-openjdk-17 AS builder
 # Define o diretório de trabalho no container
 WORKDIR /app
 
-# Copia os arquivos do projeto para o container
+# Copia o arquivo pom.xml e a pasta src para o diretório de trabalho
 COPY pom.xml .
 COPY src ./src
 
