@@ -1,28 +1,27 @@
-# Use the official Maven image to create a build artifact.
-# This stage is named 'builder' and is used to build the application.
-FROM maven:3.8.4-openjdk-17-slim AS builder
+# Use a imagem oficial do Maven para construir a aplicação
+FROM maven:3.8.4-openjdk-17 AS builder
 
-# Set the working directory inside the container.
+# Define o diretório de trabalho no container
 WORKDIR /app
 
-# Copy the project files into the container.
+# Copia os arquivos do projeto para o container
 COPY pom.xml .
 COPY src ./src
 
-# Package the application using Maven.
+# Constrói a aplicação utilizando o Maven
 RUN mvn clean package -DskipTests
 
-# Use the official OpenJDK image to run the application.
+# Usa a imagem oficial do OpenJDK para rodar a aplicação
 FROM openjdk:17-jdk-slim
 
-# Set the working directory inside the container.
+# Define o diretório de trabalho no container
 WORKDIR /app
 
-# Copy the jar file from the 'builder' stage.
+# Copia o arquivo JAR da fase de construção
 COPY --from=builder /app/target/ServiceVix-0.0.1-SNAPSHOT.jar /app/ServiceVix-0.0.1-SNAPSHOT.jar
 
-# Expose port 8080 to the outside world.
+# Expõe a porta 8080 para o mundo exterior
 EXPOSE 8080
 
-# Command to run the application.
+# Comando para rodar a aplicação
 CMD ["java", "-jar", "/app/ServiceVix-0.0.1-SNAPSHOT.jar"]
