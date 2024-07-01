@@ -1,8 +1,8 @@
 # Fase de construção
 FROM maven:3.8.4-openjdk-17 AS builder
 
-# Instalar o Git
-RUN apt-get update && apt-get install -y git
+# Instalar o Git usando apk (Alpine Linux)
+RUN apk update && apk add git
 
 # Define o diretório de trabalho no container
 WORKDIR /app
