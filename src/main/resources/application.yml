@@ -12,7 +12,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
   profiles:
-   active: dev
+   active: ${SPRING_PROFILES_ACTIVE:dev}
 #    active: uat
 #    active: staging
 #    active: prod
