@@ -17,3 +17,71 @@ spring:
 #    active: staging
 #    active: prod
 #     active: qa
+
+project:
+  product:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/products
+  service:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/services
+  organization:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/organization
+  user:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/user
+  temp:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/temp
+     
+#Admin configuration
+admin:
+  baseURL: https://servicevix.rogpe.tech
+  
+# JWT Configuration
+jwt:
+  secret:
+    key: ${JWT_SECRET_KEY}
+  expiration:
+    time:
+      ms: 3600000
+
+# Super admins for application
+super:
+  admin:
+    count: 2
+    
+#Estimate Email Subject
+estimate:
+  subject: Estimate Subject
+#Invoice Email Subject
+invoice:
+  subject: Invoice Subject
+  
+server:
+  port : 8081
+#Staff Default Password
+staff:
+  password: Staff@123
+    
+#Pre Roles Configuration
+role:
+  organization: ORGANIZATION
+#Read files from local directory
+resource:
+  image:
+    path: file:///opt/greenbayenergy/ServiceVixDocs/project_image/
+image:
+  base:
+    path: /opt/greenbayenergy/ServiceVixDocs/project_image/
+#thymeleaf resource config
+  resources:
+    static-locations: file:src/main/resources/static/
+    cache:
+      period: '0'
+  thymeleaf:
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
+    cache: 'false'
+    mode: HTML
+
+#Forgot Password message
+forgot-password-message:
+  prefix: Hi we got a request to change your poassword for Service Vix application. We have generated a random password for you that is 
+  suffix: .Now you can login with your account by use this password. Thank You!
