@@ -1,13 +1,10 @@
 # Fase de construção
-FROM maven:3.8.4-openjdk-17 AS builder
-
-# Instalar o Git usando apk (Alpine Linux)
-RUN apk update && apk add git
+FROM maven:3.9.8-eclipse-temurin-17 AS builder
 
 # Define o diretório de trabalho no container
 WORKDIR /app
 
-# Copia os arquivos pom.xml e src para o diretório de trabalho
+# Copia o arquivo pom.xml e o diretório src para o diretório de trabalho
 COPY pom.xml .
 COPY src ./src
 
@@ -21,10 +18,10 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copia o arquivo JAR da fase de construção
-COPY --from=builder /app/target/ServiceVix-0.0.1-SNAPSHOT.jar /app/ServiceVix-0.0.1-SNAPSHOT.jar
+COPY --from=builder /app/target/*.jar /app/app.jar
 
-# Expõe a porta 8080 para o mundo exterior
+# Expor a porta que a aplicação vai rodar
 EXPOSE 8080
 
 # Comando para rodar a aplicação
-CMD ["java", "-jar", "/app/ServiceVix-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/app.jar"]
