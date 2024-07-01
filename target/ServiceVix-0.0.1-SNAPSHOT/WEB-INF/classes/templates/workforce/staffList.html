@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GreenBayEnergy | Staff List</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+	<!--navbar-->
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- header end -->
+			<!-- mainconatiner -->
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="row h-100">
+					<div class="col-12">
+						<div class="card data-cards h-100">
+							<div class="workforce-container">
+								<nav>
+									<div class="nav nav-tabs" id="nav-tab" role="tablist">
+										<button class="nav-link active custom-navlink" id="nav-users-tab"
+											data-bs-toggle="tab" data-bs-target="#nav-users" type="button" role="tab"
+											aria-controls="nav-users" aria-selected="true">
+											Users
+										</button>
+										<button
+											th:if="${#strings.contains(#authentication.principal.authorities, 'ORGANIZATION')}"
+											class="nav-link custom-navlink" id="nav-users-role-tab" data-bs-toggle="tab"
+											data-bs-target="#nav-users-role" type="button" role="tab"
+											aria-controls="nav-users-role" aria-selected="false">
+											Users Role
+										</button>
+										<button
+											th:if="${#strings.contains(#authentication.principal.authorities, 'ORGANIZATION')}"
+											class="nav-link custom-navlink" id="nav-permissions-tab"
+											data-bs-toggle="tab" data-bs-target="#nav-permissions" type="button"
+											role="tab" aria-controls="nav-permissions" aria-selected="false">
+											Permissions
+										</button>
+									</div>
+								</nav>
+								<!-- Alert Modal -->
+								<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="alertModalLabel"
+									aria-hidden="true">
+									<div class="modal-dialog modal-dialog-centered">
+										<div class="modal-content">
+											<!-- Close button -->
+											<button type="button" class="btn-close" data-bs-dismiss="modal"
+												aria-label="Close"></button>
+											<!-- Modal Header -->
+											<div class="modal-header">
+												<h4 class="modal-title" id="deleteConfirmationLabel">Alert
+												</h4>
+											</div>
+											<!-- Modal Body -->
+											<div class="modal-body">
+												<p>Please select atleast one role from dropdown</p>
+											</div>
+
+											<!-- Modal Footer -->
+											<div class="modal-footer">
+												<!-- Cancel Button -->
+												<button type="button" class="btn btn-danger"
+													data-bs-dismiss="modal">Okay</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Alert Modal End -->
+								<!-- ----------Message Area-------- -->
+								<div class="mt-2" th:if="${session.message}">
+									<div class="alert alert-success fade show "
+										th:classappend="${session.message.type == 'success'} ? 'alert-success ' : 'alert-danger '"
+										role="alert">
+										<div th:if="${session.message.type == 'success'}">
+											<strong><i class="bi bi-check-circle-fill me-2"></i>Hey! </strong><span
+												th:text="${session.message.text}"></span>
+										</div>
+										<div th:unless="${session.message.type == 'success'}">
+											<strong><i class="bi bi-x-circle-fill me-2"></i></i>Oops ! </strong><span
+												th:text="${session.message.text}"></span>
+										</div>
+										<button type="button" class="btn-close" data-bs-dismiss="alert"
+											aria-label="Close"></button>
+									</div>
+								</div>
+								<div class="alert alert-success fade d-none mt-2" role="alert" id="success_msg">
+									<div>
+										<strong>
+											<i class="bi bi-check-circle-fill me-2"></i>Hey!
+										</strong>
+										<span id="successMessage"></span>
+									</div>
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
+								</div>
+								<div class="alert alert-danger fade d-none mt-2" role="alert" id="error_msg">
+									<div>
+										<strong>
+											<i class="bi bi-check-circle-fill me-2"></i>Oops!
+										</strong>
+										<span id="errorMessage"></span>
+									</div>
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
+								</div>
+								<div class="alert alert-danger fade show d-none mt-2" role="alert" id="already_role_ex">
+									<div>
+										<strong>
+											<i class="bi bi-check-circle-fill me-2"></i>Oops!
+										</strong>
+										<span>Role already exists !</span>
+									</div>
+									<button type="button" class="btn-close" data-bs-dismiss="alert"
+										aria-label="Close"></button>
+								</div>
+								<!-- ----------Message Area End-------- -->
+								<div class="tab-content" id="nav-tabContent">
+									<div class="tab-pane fade show active" id="nav-users" role="tabpanel"
+										aria-labelledby="nav-users-tab">
+										<div class="container-fluid custome-data-table mt-5">
+											<table id="workforce-table"
+												class="table mt-3 custom-table custom-list-table dt-responsive nowrap"
+												style="width: 100%;">
+												<thead>
+													<tr>
+														<th><input type="checkbox"></th>
+														<th>Full Name</th>
+														<th>Title</th>
+														<th>Email</th>
+														<th>Phone</th>
+														<th>Department</th>
+														<th>Location</th>
+														<th>Status</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="staff,iteration : ${allStaff}">
+														<th><input type="checkbox"></th>
+														<td
+															th:text="${staff.userDTO.firstName}+' '+${staff.userDTO.lastName}">
+														</td>
+														<td th:text="${staff.userDTO.role.name}"></td>
+														<td th:text="${staff.userDTO.email}"></td>
+														<td th:text="${staff.userDTO.mobileNum}"></td>
+														<td th:text="${staff.department}"></td>
+														<td th:text="${staff.address}"></td>
+														<td th:if="${staff.userDTO.isActive}"><span
+																class="status-capsule">Active</span></td>
+														<td th:unless="${staff.userDTO.isActive}"><span
+																class="status-capsule">Active</span></td>
+														<td>
+															<a th:href="@{'/staff/update/' + ${staff.userDTO.id}}"><span>
+																	<button class="table-action-buttons me-2">
+																		<img th:src="@{/assest/pencil.svg}"
+																			class="img-fluid edit-icon" alt="icon">
+																	</button>
+																</span></a>
+															<span>
+																<button class="table-action-buttons del-btn"
+																	type="button" data-bs-toggle="modal"
+																	th:data-bs-target="'#deleteConfirmationModalStaff-' + ${iteration.index}">
+																	<img th:src="@{/assest/trash.svg}"
+																		class="img-fluid plan-carousel-btn" alt="">
+																</button>
+																<!-- Delete Confirmation Modal -->
+																<div class="modal fade"
+																	th:id="'deleteConfirmationModalStaff-' + ${iteration.index}"
+																	tabindex="-1"
+																	aria-labelledby="deleteConfirmationLabel"
+																	aria-hidden="true">
+																	<div class="modal-dialog modal-dialog-centered">
+																		<div class="modal-content">
+																			<!-- Close button -->
+																			<button type="button" class="btn-close"
+																				data-bs-dismiss="modal"
+																				aria-label="Close"></button>
+																			<!-- Modal Body -->
+																			<div class="modal-body">
+																				<h4 class="modal-title"
+																					id="deleteConfirmationLabel">Delete
+																					Product
+																				</h4>
+																				<p>Are you sure you want to delete this
+																					Product
+																					?</p>
+																			</div>
+																			<!-- Modal Footer -->
+																			<div class="modal-footer">
+																				<!-- Cancel Button -->
+																				<button type="button"
+																					class="btn btn-secondary"
+																					data-bs-dismiss="modal">Cancel</button>
+																				<!-- Delete Button (You can replace '#' with the URL/endpoint to handle the delete operation) -->
+																				<a th:href="@{'/staff/deleteStaff/' + ${staff.userDTO.id}}"
+																					class="btn btn-danger">Delete</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!-- Delete Confirmation Moda End -->
+															</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div th:if="${#strings.contains(#authentication.principal.authorities, 'ORGANIZATION')}"
+										class="tab-pane fade" id="nav-users-role" role="tabpanel"
+										aria-labelledby="nav-users-role-tab">
+										<div class="container-fluid custome-data-table mt-5">
+											<div class="row">
+												<div class=" col-md-3">
+													<input type="text" class="form-control" id="role_name"
+														name="role_name" style="height: 45px !important;">
+													<label id="role_name_alert" class="d-none mt-1"
+														style="color: red;">Please enter any role
+														name</label>
+												</div>
+												<div class=" col-md-3">
+													<a class="secondary-btn form-btns me-3" id="add_role_btn"
+														style="height: 45px !important;font-size: initial;">Add Role</a>
+												</div>
+											</div>
+											<table id="user-roles-table"
+												class="table mt-3 custom-table custom-list-table dt-responsive nowrap"
+												style="width: 100%;">
+												<thead>
+													<tr>
+														<th><input type="checkbox"></th>
+														<th>Role</th>
+														<th>Action</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr th:each="role,iteration : ${roles}">
+														<th><input type="checkbox"></th>
+														<td th:text="${role.name}"></td>
+														<td>
+															<span>
+																<button class="table-action-buttons del-btn"
+																	type="button" data-bs-toggle="modal"
+																	th:data-bs-target="'#deleteConfirmationModalForRole-' + ${role.id}">
+																	<img src="/assest/trash.svg"
+																		class="img-fluid plan-carousel-btn" alt="">
+																</button>
+																<!-- Delete Confirmation Modal -->
+																<div class="modal fade"
+																	th:id="'deleteConfirmationModalForRole-' + ${role.id}"
+																	tabindex="-1"
+																	aria-labelledby="deleteConfirmationLabelForService"
+																	aria-hidden="true">
+																	<div class="modal-dialog modal-dialog-centered">
+																		<div class="modal-content">
+																			<!-- Close button -->
+																			<button type="button" class="btn-close"
+																				data-bs-dismiss="modal"
+																				aria-label="Close"></button>
+																			<!-- Modal Body -->
+																			<div class="modal-body">
+																				<h4 class="modal-title"
+																					id="deleteConfirmationLabel">Delete
+																					Role
+																				</h4>
+																				<p>Are you sure you want to delete this
+																					Role
+																					?</p>
+																			</div>
+																			<!-- Modal Footer -->
+																			<div class="modal-footer">
+																				<button type="button"
+																					class="btn btn-secondary"
+																					data-bs-dismiss="modal">Cancel</button>
+																				<a th:href="@{'/role/deleteRole/'+${role.id}}"
+																					class="btn btn-danger">Delete</a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!-- Delete Confirmation Modal End -->
+															</span>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div th:if="${#strings.contains(#authentication.principal.authorities, 'ORGANIZATION')}"
+										class="tab-pane fade" id="nav-permissions" role="tabpanel"
+										aria-labelledby="nav-permissions-tab">
+										<div class="container-fluid custome-data-table mt-5">
+											<div class="row">
+												<div class="ding col-md-12">
+													<select class="form-control"
+														style="height: 45px !important; width: 24%;float: left;"
+														id="permissions_role_select">
+														<option selected value="">Select Role</option>
+														<option th:each="role : ${roles}" th:value="${role.id}"
+															th:text="${role.name}"></option>
+													</select>
+												</div>
+												<hr class="mt-3">
+												<div>
+													<form action="/role/update" id="permission_form">
+														<input type="hidden" id="selected_role_name"
+															name="selected_role_name">
+														<table id="user-permissions-table" class="table custom-table"
+															style="width: 100%;">
+															<thead>
+																<tr>
+																	<th>Permissions</th>
+																	<th>List View</th>
+																	<th>Individual View</th>
+																	<th>Add New</th>
+																	<th>Update Existing</th>
+																	<th>Delete</th>
+																</tr>
+															</thead>
+															<tbody>
+																<tr th:each="permission : ${permissions}"
+																	th:id="${#strings.toUpperCase(permission)}+'_tr'">
+																	<th th:text="${permission}"></th>
+																	<td>
+																		<input type="checkbox"
+																			th:id="${#strings.toUpperCase(permission)}+'_list_view_check'"
+																			th:name="${#strings.toUpperCase(permission)}+'_list_view_check'">
+																	</td>
+																	<td>
+																		<input type="checkbox"
+																			th:id="${#strings.toUpperCase(permission)}+'_individual_view_check'"
+																			th:name="${#strings.toUpperCase(permission)}+'_individual_view_check'">
+																	</td>
+																	<td>
+																		<input type="checkbox"
+																			th:id="${#strings.toUpperCase(permission)}+'_add_new_check'"
+																			th:name="${#strings.toUpperCase(permission)}+'_add_new_check'">
+																	</td>
+																	<td>
+																		<input type="checkbox"
+																			th:id="${#strings.toUpperCase(permission)}+'_update_existing_check'"
+																			th:name="${#strings.toUpperCase(permission)}+'_update_existing_check'">
+																	</td>
+																	<td>
+																		<input type="checkbox"
+																			th:id="${#strings.toUpperCase(permission)}+'_delete_check'"
+																			th:name="${#strings.toUpperCase(permission)}+'_delete_check'">
+																	</td>
+																</tr>
+															</tbody>
+														</table>
+														<button type="button" class="primary-btn form-btns offset-11"
+															id="update_role_permission_btn">Update Role</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/js/jquery.min.js}"></script>
+		<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+		<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+		<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+		<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+		<script th:src="@{/js/initializeDataTables.js}"></script>
+		<script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+		<script th:src="@{/js/slimselect.js}"></script>
+		<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/css/addproduct-cdn.css}">
+</head>
+
+<body>
+	<!--navbar-->
+
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="row h-100">
+					<div class="col-12">
+						<div class="card data-cards h-100">
+							<div class="add-satff-container p-2">
+								<div class="data-cards-header">
+									<h4>Edit Product Categoty</h4>
+								</div>
+								<div class="data-cards-body mt-4">
+
+									<form th:action="@{/product-category/process-update}" method="post"
+										enctype="multipart/form-data">
+
+										<input type="hidden" name="productCategoryId"
+											th:value="${productCategoryDTO.productCategoryId}">
+										<div class="mb-3">
+											<label for="input1" class="form-label">Category Name</label>
+											<input type="text" class="form-control" placeholder="Category"
+												name="productCategoryName"
+												th:value="${productCategoryDTO.productCategoryName}">
+										</div>
+										<div class="mb-3">
+											<label for="categoryImage" class="form-label">Category
+												Image</label>
+											<div class="upload__box">
+												<div class="upload__img-wrap"></div>
+												<div class="upload__btn-box">
+													<label class="upload__btn primary-btn">Upload
+														images <input type="file" multiple="" data-max_length="20"
+															class="upload__inputfile" name="categoryImage"
+															th:value="${productCategoryDTO.productCategoryImage}"
+															accept="image/*">
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="mb-3">
+											<label for="input2" class="form-label">Category
+												Decription</label>
+											<textarea placeholder="Description" name="discription" class="form-control"
+												rows="5" th:text="${productCategoryDTO.discription}"></textarea>
+										</div>
+										<div class="mb-3">
+											<div class="row">
+												<label for="radioActive" class="form-label">Category
+													Status:</label>
+												<div class="col-md-3 form-check m-2">
+													<input class="form-check-input" type="radio" id="radioActive"
+														value="true" name="activationStatus"
+														th:field="${productCategoryDTO.activationStatus}" /> <label
+														class="form-check-label" for="radioActive"> Active
+													</label>
+												</div>
+
+												<div class="col-md-3 form-check m-2">
+													<input class="form-check-input" type="radio" id="radioInactive"
+														value="false" name="activationStatus"
+														th:field="${productCategoryDTO.activationStatus}" /> <label
+														class="form-check-label" for="radioInactive">
+														Inactive </label>
+												</div>
+
+											</div>
+											<a th:href="@{/product/products}" class="btn btn-outline-danger">
+												Cancel
+											</a>
+											<button type="submit" class="btn btn-outline-success">Save
+												Product Category</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/addproduct-js.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+	<!-- <script th:src="@{/js/form_validations.js}"></script> -->
+</body>
+
+</html>

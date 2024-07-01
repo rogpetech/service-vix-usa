@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Service Vix | Recieve Payment</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}">
+</head>
+
+<body>
+	<!--navbar-->
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="card data-cards">
+					<div class="productlist-container">
+						<nav>
+							<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<button sec:authorize="hasAuthority('PRODUCT')" class="nav-link active custom-navlink"
+									id="nav-product-tab" data-bs-toggle="tab" data-bs-target="#nav-product"
+									type="button" role="tab" aria-controls="nav-product" aria-selected="true">
+									Recieve Payments
+								</button>
+							</div>
+						</nav>
+						<div class="mt-2" th:if="${session.message}">
+							<div class="alert alert-success alert-dismissible "
+								th:classappend="${session.message.type == 'success'} ? 'alert-success ' : 'alert-danger '"
+								role="alert">
+								<div th:if="${session.message.type == 'success'}">
+									<strong><i class="bi bi-check-circle-fill me-2"></i>Hey! </strong><span
+										th:text="${session.message.text}"></span>
+								</div>
+								<div th:unless="${session.message.type == 'success'}">
+									<strong><i class="bi bi-x-circle-fill me-2"></i></i>Oops ! </strong><span
+										th:text="${session.message.text}"></span>
+								</div>
+								<button type="button" class="btn-close" data-bs-dismiss="alert"
+									aria-label="Close"></button>
+							</div>
+						</div>
+						<div class="tab-content" id="nav-tabContent">
+							<div class="tab-pane fade show active" id="nav-product" role="tabpanel"
+								aria-labelledby="nav-product-tab">
+								<div class="container-fluid custome-data-table mt-5">
+									<table id="productlist-table"
+										class="table custom-table custom-list-table dt-responsive nowrap custmFullWidth">
+										<thead>
+											<tr>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="customer,cItr : ${customers}">
+												<td>
+													<div class="row">
+														<div class="col-md-9 customer"
+															style="font-size: 20px; font-weight: bold;">
+															<a href="#" class="d-none"
+																th:id="'invoiceTableArrowRight'+${customer.customerId}"
+																th:onclick="'showInvoiceTable('+${customer.customerId}+')'"><img
+																	th:src="@{/assest/right-arrow.svg}"
+																	class="img-icon"></a>
+															<a href="#"
+																th:id="'invoiceTableArrowDown'+${customer.customerId}"
+																th:onclick="'hideInvoiceTable('+${customer.customerId}+')'"><img
+																	th:src="@{/assest/down-arrow.svg}"
+																	class="img-icon"></a>&nbsp;&nbsp;
+															<a href="#"><label for="invoiceTableArrow"
+																	class="form-label"
+																	style="color: black;cursor: pointer;"
+																	th:text="${customer.customerName}"></label></a>
+														</div>
+														<div class="col-md-3">
+															<span th:text="${customer.invoices.size}"
+																style="font-weight: bold;"></span>
+															<span th:if="${customer.invoices.size==1}"
+																style="font-weight: bold;font-size: 15px;">Invoice</span>
+															<span th:unless="${customer.invoices.size==1}"
+																style="font-weight: bold;font-size: 15px;">Invoices</span>
+															|
+															<span>Total Outstanding :<span
+																	th:text="'$'+${#numbers.formatDecimal(customer.totalInvoiceAmount, 0, 'COMMA', 2, 'POINT')}"
+																	style="font-weight: bold;"></span>
+															</span>
+														</div>
+														<div class="col-md-12 "
+															th:id="'invoicePaymenttable'+${customer.customerId}">
+															<table class="table table-striped">
+																<thead>
+																	<tr>
+																		<th></th>
+																		<th>Invoice Date</th>
+																		<th>Invoice Id</th>
+																		<th>Estimate Id</th>
+																		<th>Total</th>
+																	</tr>
+																</thead>
+																<tbody>
+																	<tr
+																		th:each="customerInvoice,itr : ${customer.invoices}">
+																		<td>
+																			<input type="checkbox"
+																				th:value="${customerInvoice.id}"
+																				th:name="'selectedInvoiceIds'+${customer.customerId}"
+																				th:id="'invoiceCheck'+${customer.customerId}+${itr.index}"
+																				th:onchange="'showHideRecievePaymentBtn('+${customer.customerId}+','+${customerInvoice.options[0].invoiceTotal}+','+(${itr.index})+')'" />
+																		</td>
+																		<td
+																			th:text="${#strings.substring(customerInvoice.createdAt, 0, 10)+' '+#strings.substring(customerInvoice.createdAt, 11, 19)}">
+																		</td>
+																		<td th:text="${customerInvoice.id}"></td>
+																		<td th:if="${customerInvoice.estimateDTO}"
+																			th:text="${customerInvoice.estimateDTO.id}">
+																		</td>
+																		<td th:unless="${customerInvoice.estimateDTO}">
+																			Not Available
+																		</td>
+																		<td
+																			th:text="'$'+${#numbers.formatDecimal(customerInvoice.options[0].invoiceTotal, 0, 'COMMA', 2, 'POINT')}">
+																		</td>
+																	</tr>
+																</tbody>
+															</table>
+															<div class="row">
+																<div class="col-md-12">
+																	<span style="font-weight: bold;float: right;">Total
+																		Outstanding
+																		:<span
+																			th:text="'$'+${#numbers.formatDecimal(customer.totalInvoiceAmount, 0, 'COMMA', 2, 'POINT')}"
+																			style="font-weight: bold;"></span>
+																	</span>
+																</div>
+																<div class="col-md-12 mt-2">
+																	<div style="float: left;">
+																		<form method="get"
+																			th:action="@{/invoice/payment/generatePaymentTrasaction}"
+																			th:id="'recievePaymentForm'+${customer.customerId}">
+																			<input type="hidden" name="selectedInvoices"
+																				th:id="'selectedInvoices'+${customer.customerId}"
+																				value="" />
+																			<input type="hidden"
+																				name="selectedInvoiceCustomerId"
+																				th:id="'selectedInvoiceCustomerId'+${customer.customerId}"
+																				value="" />
+																			<button type="button" disabled
+																				class="primary-btn form-btns"
+																				th:id="'recievePaymentBtn'+${customer.customerId}"
+																				style="width: auto;opacity: .5;pointer-events: none;"
+																				th:onclick="'recievePayment('+${customer.customerId}+')'">Recieve
+																				Payments For Selected
+																				Invoice</button>
+																		</form>
+																	</div>
+																	<div style="float: right;">
+																		<span
+																			style="font-weight: bold;color: #0c8003;font-size: 18px;">Total
+																			Selected
+																			:<span style="font-weight: bold;"
+																				th:id="'totalSelectedInvoice'+${customer.customerId}">$0.00</span>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/initializeDataTables.js}"></script>
+	<script th:src="@{/js/invoice.js}"></script>
+</body>
+
+</html>

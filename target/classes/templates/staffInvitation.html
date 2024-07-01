@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	</meta>
+	<meta name="viewport" content="width=auto, initial-scale=1.0">
+	</meta>
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Hello your email register as staff on Service Vix.</h1>
+	<span>You need to change your password
+		&nbsp;
+		<form th:action="@{${invitationLink}}" method="post">
+			<input type="hidden" th:value="${staffEmailId}" name="staffEmailId" />
+			<button class="primary" type="submit">Change Passsword</button>
+		</form>
+	</span>
+</body>
+
+</html>

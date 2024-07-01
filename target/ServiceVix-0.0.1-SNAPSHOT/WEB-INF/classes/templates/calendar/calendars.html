@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServiceVix</title>
+   <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+    <link rel="stylesheet" th:href="@{/css/slimselect.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/responsive.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!--navbar-->
+
+    <div class="body_container d-flex">
+       <div th:replace="component/sidebar :: sidebar"></div>
+        <div class="main">
+            <!-- haeder -->
+            <header th:replace="component/topmenu :: topmenu"></header>
+            <!-- headerend -->
+            <!-- mainconatiner -->
+            <div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+
+
+                <div class="card data-cards">
+                    <div class="workforce-container">
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active custom-navlink" id="nav-workforce-tab"
+                                    data-bs-toggle="tab" data-bs-target="#nav-workforce" type="button" role="tab"
+                                    aria-controls="nav-workforce" aria-selected="true">
+                                    Calendar
+                                </button>
+                                <!-- <button class="nav-link custom-navlink" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</button>
+                                      <button class="nav-link custom-navlink" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button> -->
+                            </div>
+                        </nav>
+                        <!--<div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-workforce" role="tabpanel"
+                                aria-labelledby="nav-workforce-tab">
+                                <div class="container-fluid custome-data-table mt-5">
+                                    <table id="invoices-table" class="table mt-3 custom-table custom-list-table dt-responsive nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <th>Invoices ID</th>
+                                                <th>Customer</th>
+                                                <th>Terms</th>
+                                                <th>Total</th>
+                                                <th>Estimate status</th>
+                                                <th>Sent</th>
+                                                <th>Created on</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <td>#3297</td>
+                                                <td>Leo Alves</td>
+                                                <td>Lorem Ipsum is simply dummy</td>
+                                                <td>$1,250.00</td>
+                                                <td><span class="status-capsule">Estimate won</span></td>
+                                                <td><img th:src="@{/assest/send_invoice.png}" alt=""></td>
+                                                <td>06/12/2023</td>
+                                                <td>
+                                                    <span>
+                                                        <button class="table-action-buttons view-btn me-2"><img
+                                                                th:src="@{/assest/eye.svg}" class="img-fluid view-icon"
+                                                                alt=""></button>
+                                                    </span>
+                                                    <span>
+															<button class="table-action-buttons me-2">
+																<img th:src="@{/assest/pencil.svg}"
+																	class="img-fluid edit-icon" alt="icon">
+															</button>
+														</span>
+                                                  
+                                                </td>
+                                            </tr>
+                                           
+                                            <tr>
+                                                <th><input type="checkbox"></th>
+                                                <td>#3297</td>
+                                                <td>Leo Alves</td>
+                                                <td>Lorem Ipsum is simply dummy</td>
+                                                <td>$1,250.00</td>
+                                                <td><span class="status-capsule lost">Estimate lost</span></td>
+                                                <td><img th:src="@{/assest/send_invoice.png}" alt=""></td>
+                                                <td>06/12/2023</td>
+                                                <td>
+                                                    <span>
+                                                        <button class="table-action-buttons view-btn me-2"><img
+                                                                th:src="@{/assest/eye.svg}" class="img-fluid view-icon"
+                                                                alt=""></button>
+                                                    </span>
+                                                    <span>
+                                                        <span>
+															<button class="table-action-buttons me-2">
+																<img th:src="@{/assest/pencil.svg}"
+																	class="img-fluid edit-icon" alt="icon">
+															</button>
+														</span>
+                                                  
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>-->
+                        <div class="tab-content" id="nav-tabContent">
+							<div class="tab-pane fade show active" id="nav-workforce" role="tabpanel"
+								aria-labelledby="nav-workforce-tab">
+								<div class="container-fluid custome-data-table mt-5">
+									<h5> Welcome to Calendar Deshboard </h5>
+								</div>
+							</div>
+
+						</div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/initializeDataTables.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

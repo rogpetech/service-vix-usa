@@ -1,0 +1,107 @@
+# Database configuration
+spring:
+  #Database Configuration
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+#Email Cnfiguration 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    #username: kailashsirswal5@gmail.com
+    #password: jmgbgssvabqjkhyx
+    username: shammy.sainicool4658@gmail.com
+    password: eavfgypzlwqjduuw
+    properties:
+      mail:
+       smtp:
+        auth: true
+        starttls: 
+         enable: true
+    
+  #JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+  # Thymeleaf Configuration
+  thymeleaf:
+    enabled: true
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    mode: HTML
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 1000MB
+      max-request-size: 1000MB
+  mvc:
+        mime-type.**.js: application/javascript
+        
+#Images directory configuration
+project:
+  product:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/products
+  service:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/services
+  organization:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/organization
+  user:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/user
+  temp:
+    upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/temp
+     
+#Admin configuration
+admin:
+  baseURL: http://localhost:8080
+
+# JWT Configuration
+jwt:
+  secret:
+    key: MbQeThWmZq4t7w!z==========S3r^!seV|x
+  expiration:
+    time:
+      ms: 3600000
+
+# Super admins for application
+super:
+  admin:
+    count: 2
+    
+#Estimate Email Subject
+estimate:
+  subject: Estimate Subject
+# Server port  
+# server:
+#  port : 6075
+    
+#Staff Default Password
+staff:
+  password: Staff@123
+    
+#Pre Roles Configuration
+role:
+  organization: ORGANIZATION
+#Read files from local directory
+resource:
+  image:
+    path: file:///opt/greenbayenergy/ServiceVixDocs/project_image/
+image:
+  base:
+    path: /opt/greenbayenergy/ServiceVixDocs/project_image/
+#thymeleaf resource config
+  resources:
+    static-locations: file:src/main/resources/static/
+    cache:
+      period: '0'
+  thymeleaf:
+    encoding: UTF-8
+    prefix: file:src/main/resources/templates/
+    cache: 'false'
+    mode: HTML
+
+

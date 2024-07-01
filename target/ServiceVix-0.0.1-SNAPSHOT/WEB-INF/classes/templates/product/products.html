@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}">
+</head>
+
+<body>
+	<!--navbar-->
+
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- add_product_category_modal-->
+			<div class="modal fade" id="addProductCategory" tabindex="-1" aria-labelledby="addProductCategoryLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content update-profile-modal">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Add Product Category</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/product-category/process-add}" method="post"
+								enctype="multipart/form-data">
+								<div class="mb-3">
+									<label for="input1" class="form-label">Category Name</label>
+									<input type="text" class="form-control" placeholder="Category"
+										name="productCategoryName" required>
+								</div>
+								<div class="mb-3">
+									<label for="categoryImage" class="form-label">Category Image</label>
+									<div class="upload__box">
+										<div class="upload__img-wrap"></div>
+										<div class="upload__btn-box">
+											<label class="upload__btn primary-btn">Upload
+												images <input type="file" multiple="" data-max_length="20"
+													class="upload__inputfile" name="categoryImage" accept="image/*">
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="mb-3">
+									<label for="input2" class="form-label">Category Decription</label>
+									<textarea placeholder="Description" name="discription" required class="form-control"
+										rows="5"></textarea>
+								</div>
+								<div class="mb-3">
+									<div class="row"><label for="radioActive" class="form-label">Category
+											Status:</label>
+										<div class="col-md-3 form-check m-2">
+											<input class="form-check-input" type="radio" id="radioActive" value="true"
+												name="activationStatus" checked>
+											<label class="form-check-label" for="radioActive">
+												Active
+											</label>
+										</div>
+										<div class="col-md-3 form-check m-2">
+											<input class="form-check-input" type="radio" id="radioInactive"
+												value="false" name="activationStatus">
+											<label class="form-check-label" for="radioInactive">
+												Inactive
+											</label>
+										</div>
+									</div>
+								</div>
+								<button type="button" class="btn btn-outline-danger"
+									data-bs-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-outline-success">Add Product Category</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- add_product_category_modal_end -->
+			<!-- add_service_category_modal-->
+			<div class="modal fade" id="addServiceCategory" tabindex="-1" aria-labelledby="addServiceCategoryLabel"
+				aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content update-profile-modal">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Add Service Category</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+							<form th:action="@{/service-category/process-add}" method="post"
+								enctype="multipart/form-data">
+								<div class="mb-3">
+									<label for="input1" class="form-label">Category Name</label>
+									<input type="text" class="form-control" placeholder="Category"
+										name="serviceCategoryName" required>
+								</div>
+								<div class="mb-3">
+									<label for="categoryImage" class="form-label">Category Image</label>
+									<div class="upload__box">
+										<div class="upload__img-wrap"></div>
+										<div class="upload__btn-box">
+											<label class="upload__btn primary-btn">Upload
+												images <input type="file" multiple="" data-max_length="20"
+													class="upload__inputfile" name="categoryImage" accept="image/*">
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="mb-3">
+									<label for="input2" class="form-label">Category Decription</label>
+									<textarea placeholder="Description" class="form-control" rows="5" name="discription"
+										required></textarea>
+								</div>
+								<div class="mb-3">
+									<div class="row"><label for="radioActive" class="form-label">Category Status</label>
+										<div class="col-md-3 form-check m-2">
+											<input class="form-check-input" type="radio" name="activationStatus"
+												id="radioActive" value="true" checked>
+											<label class="form-check-label" for="radioActive">
+												Active
+											</label>
+										</div>
+										<div class="col-md-3 form-check m-2">
+											<input class="form-check-input" type="radio" name="activationStatus"
+												id="radioInactive" value="false">
+											<label class="form-check-label" for="radioInactive">
+												Inactive
+											</label>
+										</div>
+									</div>
+								</div>
+								<button type="button" class="btn btn-outline-danger"
+									data-bs-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-outline-success">Add Service Category</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- add_service_category_modal_end -->
+			<!-- mainconatiner -->
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="card data-cards">
+					<div class="productlist-container">
+						<nav>
+							<div class="nav nav-tabs" id="nav-tab" role="tablist">
+								<button sec:authorize="hasAuthority('PRODUCT')" class="nav-link active custom-navlink"
+									id="nav-product-tab" data-bs-toggle="tab" data-bs-target="#nav-product"
+									type="button" role="tab" aria-controls="nav-product" aria-selected="true">
+									Products
+								</button>
+								<button sec:authorize="hasAuthority('PRODUCT_CATEGORY')" class="nav-link custom-navlink"
+									id="nav-product-category-tab" data-bs-toggle="tab"
+									data-bs-target="#nav-product-category" type="button" role="tab"
+									aria-controls="nav-product-category" aria-selected="false">
+									Product Categories
+								</button>
+								<button sec:authorize="hasAuthority('SERVICE')" class="nav-link custom-navlink"
+									id="nav-services-tab" data-bs-toggle="tab" data-bs-target="#nav-services"
+									type="button" role="tab" aria-controls="nav-services" aria-selected="false">
+									Services
+								</button>
+								<button sec:authorize="hasAuthority('SERVICE_CATEGORY')" class="nav-link custom-navlink"
+									id="nav-service-category-tab" data-bs-toggle="tab"
+									data-bs-target="#nav-service-category" type="button" role="tab"
+									aria-controls="nav-service-category" aria-selected="false">
+									Service Categories
+								</button>
+							</div>
+						</nav>
+						<div class="mt-2" th:if="${session.message}">
+							<div class="alert alert-success alert-dismissible "
+								th:classappend="${session.message.type == 'success'} ? 'alert-success ' : 'alert-danger '"
+								role="alert">
+								<div th:if="${session.message.type == 'success'}">
+									<strong><i class="bi bi-check-circle-fill me-2"></i>Hey! </strong><span
+										th:text="${session.message.text}"></span>
+								</div>
+								<div th:unless="${session.message.type == 'success'}">
+									<strong><i class="bi bi-x-circle-fill me-2"></i></i>Oops ! </strong><span
+										th:text="${session.message.text}"></span>
+								</div>
+								<button type="button" class="btn-close" data-bs-dismiss="alert"
+									aria-label="Close"></button>
+							</div>
+						</div>
+						<div class="tab-content" id="nav-tabContent">
+							<div sec:authorize="hasAuthority('PRODUCT')" class="tab-pane fade show active"
+								id="nav-product" role="tabpanel" aria-labelledby="nav-product-tab">
+								<div class="container-fluid custome-data-table mt-5">				
+									<table id="productlist-table"
+										class="table custom-table custom-list-table dt-responsive nowrap custmFullWidth">
+										<a sec:authorize="hasAuthority('PRODUCT_ADD')" class="primary-btn"
+											href="/product/add" style="float: right;width: auto;">+
+											Add Product</a>
+										<thead>
+											<tr>
+												<th><input type="checkbox"></th>
+												<th>Product Name</th>
+												<th>Product Category</th>
+												<th>Unit Price</th>
+												<th>Unit Cost</th>
+												<th>Member Price</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr sec:authorize="hasAuthority('PRODUCT_LIST_VIEW')"
+												th:each="product, iteration : ${products}">
+												<td><input type="checkbox"></td>
+												<td th:text="${product.productName}"></td>
+												<td th:text="${product.productCategory.productCategoryName}"></td>
+												
+												
+												<td th:text="'$'+${#numbers.formatDecimal(product.regularPrice, 0, 'COMMA', 2, 'POINT')}"></td>
+												<td th:text="'$'+${#numbers.formatDecimal(product.averageCost, 0, 'COMMA', 2, 'POINT')}"></td>
+												<td th:text="'$'+${#numbers.formatDecimal(product.memberPrice, 0, 'COMMA', 2, 'POINT')}"></td>
+												<!--<td th:text="'$'+${product.regularPrice}"></td>-->
+												<!--<td th:text="'$'+${product.averageCost}"></td>
+												<td th:text="'$'+${product.memberPrice}"></td>-->
+												<td>
+													<a sec:authorize="hasAuthority('PRODUCT_UPDATE')"
+														th:href="@{'/product/update/' + ${product.productId}}">
+														<span>
+															<button class="table-action-buttons me-2">
+																<img th:src="@{/assest/pencil.svg}"
+																	class="img-fluid edit-icon" alt="icon">
+															</button>
+														</span>
+													</a>
+													<span>
+														<button sec:authorize="hasAuthority('PRODUCT_DELETE')"
+															class="table-action-buttons del-btn" type="button"
+															data-bs-toggle="modal"
+															th:data-bs-target="'#deleteConfirmationModal-' + ${iteration.index}">
+															<img th:src="@{/assest/trash.svg}"
+																class="img-fluid plan-carousel-btn" alt="">
+														</button>
+														<!-- Delete Confirmation Modal -->
+														<div class="modal fade"
+															th:id="'deleteConfirmationModal-' + ${iteration.index}"
+															tabindex="-1" aria-labelledby="deleteConfirmationLabel"
+															aria-hidden="true">
+															<div class="modal-dialog modal-dialog-centered">
+																<div class="modal-content">
+																	<!-- Close button -->
+																	<button type="button" class="btn-close"
+																		data-bs-dismiss="modal"
+																		aria-label="Close"></button>
+
+																	<!-- Modal Body -->
+																	<div class="modal-body">
+																		<h4 class="modal-title"
+																			id="deleteConfirmationLabel">Delete Product
+																		</h4>
+																		<p>Are you sure you want to delete this Product
+																			?</p>
+																	</div>
+
+																	<!-- Modal Footer -->
+																	<div class="modal-footer">
+																		<!-- Cancel Button -->
+																		<button type="button" class="btn btn-secondary"
+																			data-bs-dismiss="modal">Cancel</button>
+																		<!-- Delete Button (You can replace '#' with the URL/endpoint to handle the delete operation) -->
+																		<a th:href="@{'/product/remove/' + ${product.productId}}"
+																			class="btn btn-danger">Delete</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<!-- Delete Confirmation Moda End -->
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="tab-pane fade " sec:authorize="hasAuthority('PRODUCT_CATEGORY')"
+								id="nav-product-category" role="tabpanel" aria-labelledby="nav-product-category-tab">
+								<div class="container-fluid custome-data-table mt-5">
+									<table id="product-category-table"
+										class="table custom-table custom-category-table dt-responsive nowrap w-100">
+										<thead>
+											<tr>
+												<th><input type="checkbox"></th>
+												<th>Category Name</th>
+												<th>Description</th>
+												<th>Status</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="productCat, iteration : ${productCategories}">
+												<td><input type="checkbox"></td>
+												<td th:text="${productCat.productCategoryName}"></td>
+												<td th:text="${productCat.discription}"></td>
+												<td><span class="status-capsule"
+														th:text="${productCat.activationStatus ? 'Active' : 'Inactive'}"></span>
+												</td>
+												<td>
+													<a
+														th:href="@{'/product-category/update/' + ${productCat.productCategoryId}}"><span>
+															<button class="table-action-buttons me-3">
+																<img th:src="@{/assest/pencil.svg}"
+																	class="img-fluid edit-icon" alt="icon">
+															</button>
+														</span></a>
+													<span>
+														<button class="table-action-buttons del-btn" type="button"
+															data-bs-toggle="modal"
+															th:data-bs-target="'#deleteConfirmationModalForProductCategory-' + ${iteration.index}">
+															<img th:src="@{/assest/trash.svg}"
+																class="img-fluid plan-carousel-btn" alt="">
+														</button>
+														<!-- Delete Confirmation Modal -->
+														<div class="modal fade"
+															th:id="'deleteConfirmationModalForProductCategory-' + ${iteration.index}"
+															tabindex="-1"
+															aria-labelledby="deleteConfirmationLabelForProductCategory"
+															aria-hidden="true">
+															<div class="modal-dialog modal-dialog-centered">
+																<div class="modal-content">
+																	<!-- Close button -->
+																	<button type="button" class="btn-close"
+																		data-bs-dismiss="modal"
+																		aria-label="Close"></button>
+
+																	<!-- Modal Body -->
+																	<div class="modal-body">
+																		<h4 class="modal-title"
+																			id="deleteConfirmationLabel">Delete Product
+																			Category
+																		</h4>
+																		<p>Are you sure you want to delete this Product
+																			Category ?</p>
+																	</div>
+
+																	<!-- Modal Footer -->
+																	<div class="modal-footer">
+																		<!-- Cancel Button -->
+																		<button type="button" class="btn btn-secondary"
+																			data-bs-dismiss="modal">Cancel</button>
+																		<!-- Delete Button (You can replace '#' with the URL/endpoint to handle the delete operation) -->
+																		<a th:href="@{'/product-category/remove/' + ${productCat.productCategoryId}}"
+																			class="btn btn-danger">Delete</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<!-- Delete Confirmation Moda End -->
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="nav-services" role="tabpanel"
+								sec:authorize="hasAuthority('SERVICE')" aria-labelledby="nav-services-tab">
+								<div class="container-fluid custome-data-table mt-5">
+									<table id="services-table"
+										class="table custom-table custom-list-table dt-responsive nowrap w-100">
+										<a sec:authorize="hasAuthority('SERVICE_ADD')" class="primary-btn"
+											href="/service/add" style="float: right;width: auto;">+
+											Add Service</a>
+										<thead>
+											<tr>
+												<th><input type="checkbox"></th>
+												<th>Services Name</th>
+												<th>Services Category</th>
+												<th>Description</th>
+												<th>Regular Rate($)</th>
+												<th>Member Rate($)</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr sec:authorize="hasAuthority('SERVICE_LIST_VIEW')"
+												th:each="service, iteration : ${services}">
+												<td><input type="checkbox"></td>
+												<td th:text="${service.serviceName}"></td>
+												<!-- <td><span th:if="${service.serviceCategory.serviceCategoryName != null}" th:text="${service.serviceCategory.serviceCategoryName}"></span>
+                                        		<span th:unless="${service.serviceCategory.serviceCategoryName != null}">No Service Category Available</span></td>  -->
+												<td th:text="${service.serviceCategory.serviceCategoryName}"></td>
+												<td th:text="${service.discription}"></td>
+												
+												<td th:text="'$'+${#numbers.formatDecimal(service.regularPrice, 0, 'COMMA', 2, 'POINT')}"></td>
+												<td th:text="'$'+${#numbers.formatDecimal(service.internalCost, 0, 'COMMA', 2, 'POINT')}"></td>
+												
+												<!--<td th:text="${service.regularPrice}"></td>
+												<td th:text="${service.internalCost}"></td>-->
+												<td>
+													<a sec:authorize="hasAuthority('SERVICE_UPDATE')"
+														th:href="@{'/service/update/' + ${service.id}}">
+														<span>
+															<button class="table-action-buttons me-2">
+																<img th:src="@{/assest/pencil.svg}"
+																	class="img-fluid edit-icon" alt="icon">
+															</button>
+														</span>
+													</a>
+													<span>
+														<button sec:authorize="hasAuthority('SERVICE_DELETE')"
+															class="table-action-buttons del-btn" type="button"
+															data-bs-toggle="modal"
+															th:data-bs-target="'#deleteConfirmationModalForService-' + ${iteration.index}">
+															<img th:src="@{/assest/trash.svg}"
+																class="img-fluid plan-carousel-btn" alt="">
+														</button>
+														<!-- Delete Confirmation Modal -->
+														<div class="modal fade"
+															th:id="'deleteConfirmationModalForService-' + ${iteration.index}"
+															tabindex="-1"
+															aria-labelledby="deleteConfirmationLabelForService"
+															aria-hidden="true">
+															<div class="modal-dialog modal-dialog-centered">
+																<div class="modal-content">
+																	<!-- Close button -->
+																	<button type="button" class="btn-close"
+																		data-bs-dismiss="modal"
+																		aria-label="Close"></button>
+
+																	<!-- Modal Body -->
+																	<div class="modal-body">
+																		<h4 class="modal-title"
+																			id="deleteConfirmationLabel">Delete Service
+																		</h4>
+																		<p>Are you sure you want to delete this Service
+																			?</p>
+																	</div>
+
+																	<!-- Modal Footer -->
+																	<div class="modal-footer">
+																		<!-- Cancel Button -->
+																		<button type="button" class="btn btn-secondary"
+																			data-bs-dismiss="modal">Cancel</button>
+																		<!-- Delete Button (You can replace '#' with the URL/endpoint to handle the delete operation) -->
+																		<a th:href="@{'/service/remove/' + ${service.id}}"
+																			class="btn btn-danger">Delete</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<!-- Delete Confirmation Moda End -->
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="nav-service-category" role="tabpanel"
+								sec:authorize="hasAuthority('SERVICE_CATEGORY')"
+								aria-labelledby="nav-service-category-tab">
+								<div class="container-fluid custome-data-table mt-5">
+									<table id="service-category-table"
+										class="table custom-table custom-category-table dt-responsive nowrap w-100">
+										<thead>
+											<tr>
+												<th><input type="checkbox"></th>
+												<th>Category Name</th>
+												<th>Description</th>
+												<th>Status</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr th:each="serviceCat, iteration : ${serviceCategories}">
+												<td><input type="checkbox"></td>
+												<td th:text="${serviceCat.serviceCategoryName}"></td>
+												<td th:text="${serviceCat.discription}"></td>
+												<td><span class="status-capsule"
+														th:text="${serviceCat.activationStatus ? 'Active' : 'Inactive'}"></span>
+												</td>
+												<td>
+													<a
+														th:href="@{'/service-category/update/' + ${serviceCat.serviceCategoryId}}"><span>
+															<button class="table-action-buttons me-2">
+																<img th:src="@{/assest/pencil.svg}"
+																	class="img-fluid edit-icon" alt="icon">
+															</button>
+														</span></a>
+													<span>
+														<button class="table-action-buttons del-btn" type="button"
+															data-bs-toggle="modal"
+															th:data-bs-target="'#deleteConfirmationModalForServiceCategory-' + ${iteration.index}">
+															<img th:src="@{/assest/trash.svg}"
+																class="img-fluid plan-carousel-btn" alt="">
+														</button> <!-- Delete Confirmation Modal -->
+														<div class="modal fade"
+															th:id="'deleteConfirmationModalForServiceCategory-' + ${iteration.index}"
+															tabindex="-1"
+															aria-labelledby="deleteConfirmationLabelForServiceCategory"
+															aria-hidden="true">
+															<div class="modal-dialog modal-dialog-centered">
+																<div class="modal-content">
+																	<!-- Close button -->
+																	<button type="button" class="btn-close"
+																		data-bs-dismiss="modal"
+																		aria-label="Close"></button>
+
+																	<!-- Modal Body -->
+																	<div class="modal-body">
+																		<h4 class="modal-title"
+																			id="deleteConfirmationLabel">Delete Product
+																			Category
+																		</h4>
+																		<p>Are you sure you want to delete this Product
+																			Category ?</p>
+																	</div>
+
+																	<!-- Modal Footer -->
+																	<div class="modal-footer">
+																		<!-- Cancel Button -->
+																		<button type="button" class="btn btn-secondary"
+																			data-bs-dismiss="modal">Cancel</button>
+																		<!-- Delete Button (You can replace '#' with the URL/endpoint to handle the delete operation) -->
+																		<a th:href="@{'/service-category/remove/' + ${serviceCat.serviceCategoryId}}"
+																			class="btn btn-danger">Delete</a>
+																	</div>
+																</div>
+															</div>
+														</div> <!-- Delete Confirmation Moda End -->
+													</span>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/initializeDataTables.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}">
+</head>
+
+<body>
+	<!--navbar-->
+
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+			<div id="add-job-parent-div" class="container-fluid  p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="card data-cards">					
+					<div class="container-fluid">
+						<form method="post" th:action="@{/recieve-payment/generate}">
+							<div class="main-table">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="row">
+											<div
+												class="data-cards-header d-flex justify-content-between estimate-header">
+												<h4>Receive a Payment</h4>
+											</div>
+										</div>
+									</div>
+									<div class="col-xl-6">
+										<label for="fromCustomer" class="form-label">From Customer</label>
+										<select class="selectpicker form-control" id="fromCustomer"
+											name="fromCustomerId">
+											<option th:each="customer : ${customers}"
+												th:selected="${customer.customerId==recieveInvoicePaymentDTO.customerDTO.customerId}"
+												th:text="${customer.customerName}" th:value="${customer.customerId}">
+											</option>
+										</select>
+									</div>
+									<p class="mt-5 section-heading">Process Transaction</p>
+									<div class="col-xl-4">
+										<label for="paymentMethods" class="form-label">Payment Methods</label>
+										<select class="selectpicker form-control" id="paymentMethods"
+											name="paymentMethod">
+											<option value="check">Check</option>
+											<option value="cash">Cash</option>
+										</select>
+									</div>
+									<div class="col-xl-4">
+										<label for="reference" class="form-label">Check/Reference#</label>
+										<input type="text" class="form-control" id="reference" name="reference" />
+									</div>
+									<div class="col-xl-5 mt-4">
+										<label for="recievedBy" class="form-label">Received By</label>
+										<input type="hidden" name="recievedById"
+											th:value="${recieveInvoicePaymentDTO.loggedInUser.id}" />
+										<input type="text" class="form-control" id="recievedBy"
+											th:value="${recieveInvoicePaymentDTO.loggedInUser.username}+' ('+${recieveInvoicePaymentDTO.loggedInUser.email}+')'" />
+									</div>
+									<div class="col-xl-3 mt-4">
+										<label for="recievedOn" class="form-label">Received On</label>
+										<input type="date" class="form-control" id="recievedOn" name="recievedOn" />
+									</div>
+									<div class="col-xl-9 mt-4">
+										<label for="paymentMemo" class="form-label">Payment Notes</label>
+										<input type="text" class="form-control" id="paymentNotes" name="paymentNotes" />
+									</div>
+									<div class="card col-xl-9 mt-4"
+										style="border-radius: 10px;background-color: #c3c3c040;">
+										<div class="card-body">
+											<div class="d-flex">
+												<div class="col-md-5 customer">
+													<h5>Amount</h5>
+												</div>
+												<div class="col-md- customer">
+													<div class="col-xl-8 me-5">
+														<div class="multi-field-wrapper"
+															id="multi_mobile_wrapper_estimate">
+															<div class="multi-fields">
+																<div class="multi-field mb-2">
+																	<div class="input_and_select"
+																		style="border-color: #0000006b;">
+																		<div class="select">
+																			<select class="selectpicker form-control">
+																				<option>$</option>
+																			</select>
+																		</div>
+																		<input type="text" class="form-control "
+																			name="totalOutstanding"
+																			th:value="${recieveInvoicePaymentDTO.invoiceTotal - recieveInvoicePaymentDTO.totalOutstanding}">
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="estimate_report_container">
+										<div class="container-fluid custome-data-table mt-5 p-0 overflow-auto"
+											id="container">
+											<input type="hidden" th:value="${recieveInvoicePaymentDTO.invoiceIdsStr}"
+												name="invoiceIdsStr" />
+											<table id="recieve-payment-tablr1" name="recieve-payment-tablr1"
+												class="table custom-table custom-category-table dt-responsive nowrap w-100"
+												style="overflow: hidden;">
+												<thead>
+													<tr>
+														<th class="custmlength" width="20%" style="position: relative;">
+															Product/Service<div
+																style="top: 0px; right: 0px; width: 5px; position: absolute; cursor: col-resize; user-select: none; height: 142px;">
+															</div>
+														</th>
+														<th class="custmlength" width="40%" style="position: relative;">
+															Description<div
+																style="top: 0px; right: 0px; width: 5px; position: absolute; cursor: col-resize; user-select: none; height: 142px;">
+															</div>
+														</th>
+														<th style="position: relative;">Quantity<div
+																style="top: 0px; right: 0px; width: 5px; position: absolute; cursor: col-resize; user-select: none; height: 142px;">
+															</div>
+														</th>
+														<th style="position: relative;">Rate<div
+																style="top: 0px; right: 0px; width: 5px; position: absolute; cursor: col-resize; user-select: none; height: 142px;">
+															</div>
+														</th>
+														<th style="position: relative;">Total<div
+																style="top: 0px; right: 0px; width: 5px; position: absolute; cursor: col-resize; user-select: none; height: 142px;">
+															</div>
+														</th>
+													</tr>
+												</thead>
+												<tbody style="font-size: 16px !important;">
+													<th:block
+														th:each="invoice,iitr : ${recieveInvoicePaymentDTO.invoices}">
+														<tr class="list-item"
+															th:each="optionProducts : ${invoice.options[0].optionProducts}">
+															<td data-label="Type" class="tableitem"
+																style="padding: 10px;border-bottom: 1px solid #cccaca;font-size: 0.85em;text-align: left;">
+																<span th:if="${optionProducts.productName!=null}"
+																	th:text="${optionProducts.product.productName}"></span>
+																<span th:unless="${optionProducts.productName!=null}"
+																	th:text="${optionProducts.services.serviceName}"></span>
+															</td>
+															<td data-label="Type" class="tableitem"
+																style="padding: 10px;border-bottom: 1px solid #cccaca;font-size: 0.85em;text-align: left;">
+																<span th:if="${optionProducts.productDiscription!=null}"
+																	th:text="${optionProducts.productDiscription}"></span>
+																<span
+																	th:unless="${optionProducts.productDiscription!=null}"
+																	th:text="${optionProducts.serviceDiscription}"></span>
+															</td>
+															<td data-label="Quantity" class="optionQuantityTextHTMLView"
+																style="padding: 10px;border-bottom: 1px solid #cccaca;font-size: 0.85em;text-align: left;">
+																<span th:text="${optionProducts.quantity}"></span>
+															</td>
+															<td data-label="Rate" class="optionRateTextHTMLView"
+																style="padding: 10px;border-bottom: 1px solid #cccaca;font-size: 0.85em;text-align: left;">
+																<span th:if="${optionProducts.productName!=null}"
+																	th:text="'$'+${#numbers.formatDecimal(optionProducts.product.regularPrice, 0, 'COMMA', 2, 'POINT')}"></span>
+																<span th:unless="${optionProducts.productName!=null}"
+																	th:text="'$'+${#numbers.formatDecimal(optionProducts.services.regularPrice, 0, 'COMMA', 2, 'POINT')}"></span>
+															</td>
+															<td data-label="Total" class="optionTotalTextHTMLView"
+																style="padding: 10px;border-bottom: 1px solid #cccaca;font-size: 0.85em;text-align: left;">
+																<span
+																	th:text="'$'+${#numbers.formatDecimal(optionProducts.total, 0, 'COMMA', 2, 'POINT')}"></span>
+															</td>
+														</tr>
+													</th:block>
+												</tbody>
+											</table>
+										</div>
+										<div class="estimate_summary_container mt-5">
+											<div class="row">
+												<div class="col-lg-6 mb-3 mb-lg-0">
+
+												</div>
+												<div class="col-lg-6">
+													<div class="estimate_summary">
+														<div class="order-summary ">
+															<div class="plan">
+																<p>Total Outstanding :</p>
+																<h5>
+																	<span
+																		th:text="'$'+${#numbers.formatDecimal(recieveInvoicePaymentDTO.invoiceTotal - recieveInvoicePaymentDTO.totalOutstanding, 0, 'COMMA', 2, 'POINT')}"></span>
+																</h5>
+															</div>
+															<div class="plan">
+																<p>Amount of Payment :</p>
+																<h5>
+																	<span
+																		th:text="'$'+${#numbers.formatDecimal(recieveInvoicePaymentDTO.invoiceTotal - recieveInvoicePaymentDTO.totalOutstanding, 0, 'COMMA', 2, 'POINT')}"></span>
+																</h5>
+															</div>
+															<div class="plan">
+																<p>
+																	Owed after payment :
+																</p>
+																<h5>
+																	<span>$00.00</span>
+																</h5>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12">
+									<div class="form-submit">
+										<button type="submit" class="primary-btn form-btns"
+											id="submitPaymentTransactionBtn">Submit Payment Transaction</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script th:src="@{/js/customNewTab.js}"></script>
+	<script th:src="@{/js/invoice.js}"></script>
+</body>
+
+</html>

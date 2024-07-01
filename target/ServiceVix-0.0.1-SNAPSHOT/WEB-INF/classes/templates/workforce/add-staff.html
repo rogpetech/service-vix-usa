@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>GreenBayEnergy | Add Staff</title>
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-select.min.css}" />
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+	<!--navbar-->
+
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="row h-100">
+					<div class="col-12">
+						<div class="card data-cards h-100">
+							<div class="add-satff-container p-2">
+								<div class="data-cards-header">
+									<h4>Add Staff</h4>
+								</div>
+								<div class="data-cards-body mt-4">
+									<form class="row g-4" th:action="@{/staff/process-add-staff}" id="addStaffForm"
+										th:object="${staffDTO}" method="post" enctype="multipart/form-data">
+										<input type="hidden" name="staffOrgId"
+											th:value="${#authentication.principal.dataHelper.loggedInUserId}" />
+										<p class="section-heading">Personal Information</p>
+										<div class="col-xl-3 col-lg-4">
+											<div class="custome-image">
+												<div class="avatar-upload">
+													<div class="avatar-edit">
+														<input type="file" id="imageUpload" accept=".png, .jpg, .jpeg"
+															name="userProfileMultipart">
+														<label for="imageUpload"></label>
+													</div>
+													<div class="avatar-preview">
+														<div id="imagePreview"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-8 col-xl-9">
+											<div class="row g-4">
+												<div class="col-xl-4 col-md-6">
+													<label for="first-name" class="form-label">First name<span
+															style="color:red;">*</span></label>
+													<input type="text" class="form-control" id="first-name"
+														name="userDTO.firstName">
+													<div class="mt-1" id="fname-msg"></div>
+												</div>
+												<div class="col-xl-4 col-md-6">
+													<label for="last-name" class="form-label">Last name<span
+															style="color:red;">*</span></label>
+													<input type="text" class="form-control" id="last-name"
+														name="userDTO.lastName">
+													<div class="mt-1" id="lname-msg"></div>
+												</div>
+												<div class="col-xl-4 col-md-6">
+													<label for="select_gender" class="form-label">Gender<span
+															style="color:red;">*</span></label>
+													<select class="selectpicker form-control" id="select_gender"
+														name="userDTO.gender">
+														<option selected value="Male">Male</option>
+														<option value="Female">female</option>
+														<option value="Don't Prefer'">Don't prefer to say</option>
+													</select>
+												</div>
+												<div class="col-xl-4 col-md-6">
+													<label for="inpemail" class="form-label">Email<span
+															style="color:red;">*</span></label>
+													<input type="email" class="form-control" id="inpemail"
+														name="userDTO.email">
+													<div class="mt-1" id="msg"></div>
+												</div>
+												<div class="col-xl-4 col-md-6">
+													<label for="inpmobile" class="form-label">Mobile<span
+															style="color:red;">*</span></label>
+													<input type="number" class="form-control" id="inpmobile"
+														name="userDTO.mobileNum" oninput="validateMobile()">
+													<div class="mt-1" id="mob-msg"></div>
+
+												</div>
+												<div class="col-xl-4 col-md-6">
+													<label for="inpdob" class="form-label">DOB</label>
+													<input type="date" class="form-control" id="inpdob"
+														name="dateOfBirthStr">
+												</div>
+												<div class="col-xl-8 col-md-6">
+													<label for="inpaddress" class="form-label">Address</label>
+													<input type="text" class="form-control" id="inpaddress"
+														name="address">
+												</div>
+											</div>
+										</div>
+
+										<div class="col-xl-3 col-md-6">
+											<label for="inpcity" class="form-label">City<span
+													style="color:red;">*</span></label>
+											<input type="text" class="form-control" id="inpcity" name="city">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="select_state" class="form-label">State</label>
+											<select class="selectpicker form-control" id="select_state" name="state">
+												<option th:each="usState : ${usStates}" th:value="${usState}"
+													th:text="${usState}">
+												</option>
+											</select>
+										</div>
+
+										<div class="col-md-6 col-xl-3">
+											<label for="inplicense" class="form-label">Driving License Number</label>
+											<input type="text" class="form-control" id="inplicense"
+												name="drivingLicienceNumber">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="inpexpiry" class="form-label">Driving License Expiration
+												Date</label>
+											<input type="date" class="form-control" id="inpexpiry"
+												name="drivingLicienceExpiryStr">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="inpssn" class="form-label">SSN</label>
+											<input type="text" class="form-control" id="inpssn" name="ssn">
+										</div>
+
+										<div class="col-md-6 col-xl-3">
+											<label class="form-label">Select Role<span
+													style="color:red;">*</span></label>
+											<select class="selectpicker form-control" id="select_indus" name="roleId">
+												<option selected="" value="">Select one</option>
+												<option th:each="role : ${roles}" th:value="${role.id}"
+													th:text="${role.name}" id="select_induss"></option>
+											</select>
+											<div class="error-message" id="role-error" style="color: red;"></div>
+										</div>
+
+
+										<p class="mt-5 section-heading">Employment Information</p>
+
+										<div class="col-md-6 col-xl-3">
+											<label for="job_title" class="form-label">Job title</label>
+											<input type="text" class="form-control" id="job_title" name="jobTitle">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="emp_type" class="form-label">Employment type</label>
+											<input type="text" class="form-control" id="emp_type" name="employmentType">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="dep" class="form-label">Department</label>
+											<input type="text" class="form-control" id="dep" name="department">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="assign_sup" class="form-label">Manager/Supervisor</label>
+											<input type="text" class="form-control" id="assign_sup" name="manager">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="hiredate" class="form-label">Hire date</label>
+											<input type="date" class="form-control" id="hiredate" name="hireDateStr">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="reldata" class="form-label">Release date</label>
+											<input type="date" class="form-control" id="reldata" name="releaseDateStr"
+												min="1997-01-01">
+										</div>
+										<div class="col-12">
+											<div class="form-submit">
+												<a th:href="@{/workforce/staffList}"
+													class="secondary-btn form-btns me-3" id="mainPageCancel">Cancel</a>
+												<button type="submit"
+													class="primary-btn form-btns submitform add-staff-btn"
+													data-toggle="tooltip" data-placement="top"
+													title="Please fill all required fields">Add
+													Staff</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/bootstrap-select.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/slimselect.js}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
+	<script th:src="@{/js/main.js}"></script>
+
+	<script type="text/javascript">
+
+		function showMessage(id, msg) {
+			if (msg.length != 0) {
+				$(id).html(msg).css("color", "red");
+			} else {
+				$(id).html(msg);
+			}
+		}
+
+		function requiredValidation(inputId, msgId) {
+			if ($(inputId).val().length == 0) {
+				showMessage(msgId, "This field can't be blank");
+			} else {
+				showMessage(msgId, "");
+			}
+		}
+
+		$(document).ready(function () {
+
+			$("#first-name")
+				.keyup(function (e) {
+					requiredValidation("#first-name", "#fname-msg");
+				})
+				.focus(function () {
+					requiredValidation("#first-name", "#fname-msg");
+				});
+
+			$("#last-name")
+				.keyup(function (e) {
+					requiredValidation("#last-name", "#lname-msg");
+				})
+				.focus(function () {
+					requiredValidation("#last-name", "#lname-msg");
+				});
+
+			$("#inpmobile")
+				.keyup(function (e) {
+					requiredVa("#inpmobile", "#mob-msg");
+				})
+				.focus(function () {
+					requiredValidation("#inpmobile", "#mob-msg");
+				});
+
+
+			$("#inpemail")
+				.keyup(function (e) {
+					requiredValidation("#inpemail", "#msg");
+				})
+				.focus(function () {
+					requiredValidation("#inpemail", "#msg");
+				});
+
+			$("#inpemail").on("keyup", function (e) {
+				var email = $('#inpemail').val();
+				if ($('#inpemail').val() == null || $('#inpemail').val() == "") {
+					$('#msg').show();
+					$("#msg").html("email is a required field.").css("color", "red");
+				} else {
+
+					var regex =
+						/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+					if (!regex.test(email)) {
+						$('#msg').show();
+						$("#msg").html("Invalid Email").css("color", "red");
+						return;
+					}
+					$.ajax({
+						type: 'GET',
+						url: '/staff/searchByEmail/' + email,
+						cache: false,
+						success: function (msg) {
+							$('#msg').show();
+							$.each(msg, function (index, value) {
+								console.log(value)
+								console.log(index)
+								if (value === 'Email already exists') {
+									$("#msg").html(value).css("color", "red");
+								} else {
+									$("#msg").html(value).css("color", "green");
+								}
+							});
+
+
+						},
+						error: function (jqXHR, textStatus, errorThrown) {
+							alert("fail");
+							$('#msg').show();
+							$("#msg").html(textStatus + " " + errorThrown).css("color", "red");
+						}
+					});
+				}
+			});
+		});
+
+	</script>
+
+	<script>
+
+		/* Validation for staff mobile*/
+		function validateMobile() {
+			var mobile = document.getElementById("inpmobile").value;
+			var mobilePattern = /^\d{10}$/;
+			var mobileError = document.getElementById("mob-msg");
+			if (!mobilePattern.test(mobile)) {
+				mobileError.textContent = "Invalid mobile number";
+				$('.submitform').prop('disabled', true).css('opacity', 0.5);
+			}
+			else {
+				mobileError.textContent = "";
+				$('.submitform').prop('disabled', false).css('opacity', 1.0);
+			}
+		}
+	</script>
+
+
+	<script>
+		document.addEventListener('keyup', function (k) {
+			if ($("#first-name").val() && $("#last-name").val() && $("#inpemail").val() && $("#inpmobile").val()) {
+				$('.add-staff-btn').prop('disabled', false).css('opacity', 1.0);
+			} else {
+				$('.add-staff-btn').prop('disabled', true).css('opacity', 0.5);
+			}
+		});
+	</script>
+
+	<script>
+
+		$(document).ready(function () {
+
+			$("#addStaffForm").submit(function (event) {
+				$(".error-message").empty();
+				debugger;
+				var roleName = $("#select_indus").val();
+
+
+				var valid = true;
+				if (roleName === "") {
+					$("#role-error").text("Role is required");
+					valid = false;
+				}
+
+				if (!valid) {
+					event.preventDefault();
+				}
+			});
+
+			$("#select_indus").focus(function () {
+				$("#role-error").empty();
+			});
+
+		});
+	</script>
+
+</body>
+
+</html>

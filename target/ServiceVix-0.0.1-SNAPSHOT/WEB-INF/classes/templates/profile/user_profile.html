@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" th:href="@{/css/dataTables.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.bootstrap5.min.css}">
+	<link rel="stylesheet" th:href="@{/css/slimselect.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/bootstrap-icons.min.css}">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" th:href="@{/css/responsive.css}">
+	<link rel="stylesheet" th:href="@{/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css}">
+
+
+	<style>
+		button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px 20px;
+			border: none;
+			background-color: #4CAF50;
+			color: white;
+			font-size: 16px;
+			cursor: pointer;
+		}
+
+		button img {
+			width: 20px;
+			height: 20px;
+			margin-right: 5px;
+		}
+		#toggle button{
+			display: unset;
+		}
+		#toggle button img{
+			width:auto;
+		}
+
+		button:hover {
+			background-color: #45a049;
+		}
+
+		button:focus {
+			outline: none;
+		}
+	</style>
+
+
+</head>
+
+<body>
+	<!--navbar-->
+
+	<div class="body_container d-flex">
+		<div th:replace="component/sidebar :: sidebar"></div>
+		<div class="main">
+			<!-- haeder -->
+			<header th:replace="component/topmenu :: topmenu"></header>
+			<!-- headerend -->
+			<!-- mainconatiner -->
+			<div class="container-fluid p-2 p-md-3 p-lg-4 scroll-conatiner">
+				<div class="row h-100">
+					<div class="col-12">
+						<div class="card data-cards h-100">
+							<div class="add-satff-container p-2">
+								<div class="mt-2" th:if="${session.message}">
+									<div class="alert alert-success alert-dismissible "
+										th:classappend="${session.message.type == 'success'} ? 'alert-success ' : 'alert-danger '"
+										role="alert">
+										<div th:if="${session.message.type == 'success'}">
+											<strong><i class="bi bi-check-circle-fill me-2"></i>Hey! </strong><span
+												th:text="${session.message.text}"></span>
+										</div>
+										<div th:unless="${session.message.type == 'success'}">
+											<strong><i class="bi bi-x-circle-fill me-2"></i></i>Oops ! </strong><span
+												th:text="${session.message.text}"></span>
+										</div>
+										<button type="button" class="btn-close" data-bs-dismiss="alert"
+											aria-label="Close"></button>
+									</div>
+								</div>
+								<div class="data-cards-header">
+									<h4>Profile Details</h4>
+									<a style="float: right;" th:href="@{'/organization/update/'+${user.id}}"><button
+											type="button" class="primary-btn">Edit Profile</button></a>
+								</div>
+								<div class="data-cards-body mt-4">
+									<form class="row g-4" th:action="@{/organization/process-update-profile}"
+										method="post" enctype="multipart/form-data">
+										<div class="row mt-5"
+											th:if="${#strings.contains(#authentication.principal.authorities, 'ORGANIZATION')}">
+											<p class="section-heading">Organization Details</p>
+											<div class="col-xl-3 col-lg-4">
+												<div class="custome-image">
+													<div class="avatar-upload">
+														<div class="avatar-preview">
+															<!--<img id="imagePreviewImg"
+																th:src="@{${user.organizationLogoURL}}" alt="your image"
+																style="width: 100%; height: 100%;border-radius: 19px;"
+																name="profilePicture">-->
+															<img id="imagePreviewImg"
+																th:src="${(user.organizationLogoURL != null) ? '/project_image/' +user.organizationLogoURL :'No image' }"
+																alt="your image"
+																style="width: 100%; height: 100%;border-radius: 19px;"
+																name="profilePicture">
+															<div id="imagePreview" class="d-none"
+																style="border-radius: 19px;"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-8 col-xl-9">
+												<div class="row g-4">
+													<input th:if="${user.organizationDTO!=null}" type="hidden"
+														name="organizationDTO.id" th:value="${user.organizationDTO.id}">
+													<div class="col-xl-4 col-md-6">
+														<label for="organization-name" class="form-label">Organization
+															Name</label>
+														<input type="text" class="form-control" id="organization-name"
+															th:value="${user.organizationDTO.orgName}"
+															name="organizationDTO.orgName" readonly>
+													</div>
+													<div class="col-xl-4 col-md-6">
+														<label for="inpemail" class="form-label">Email</label>
+														<input type="email" class="form-control" id="inpemail"
+															th:value="${user.organizationDTO.orgEmail}"
+															name="organizationDTO.orgEmail" readonly>
+													</div>
+													<div class="col-xl-4 col-md-6">
+														<label for="inpmobile" class="form-label">Mobile</label>
+														<input type="number" class="form-control" id="inpmobile"
+															th:value="${user.organizationDTO.orgMobNum}"
+															name="organizationDTO.orgMobNum" readonly>
+													</div>
+													<div class="col-xl-4 col-md-4">
+														<label for="org-address" class="form-label">Address</label>
+														<input type="text" class="form-control" id="org-address"
+															th:value="${user.organizationDTO.orgAddress}"
+															name="organizationDTO.orgAddress" readonly>
+													</div>
+													<div class="col-xl-4 col-md-6">
+														<label for="inputcountry" class="form-label">Country</label>
+														<select id="inputcountry" th:name="organizationDTO.orgCountry"
+															class="form-select" name="organizationDTO.orgCountry"
+															disabled>
+															<option selected disabled>-Select Country--</option>
+															<option th:each="country : ${countries}"
+																th:value="${country}"
+																th:selected="${country.toString()==user.organizationDTO.orgCountry}"
+																th:text="${country}"></option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row mt-5">
+											<p class="section-heading">User Details</p>
+											<input type="hidden" name="id" th:value="${user.id}">
+											<div class="col-xl-3 col-lg-4">
+												<div class="custome-image">
+													<div class="avatar-upload">
+														<div class="avatar-preview">
+															<img id="imagePreviewImg"
+																th:src="${(user.userProfilePictureURL != null) ? '/project_image/' +user.userProfilePictureURL :'No image' }"
+																alt="your image"
+																style="width: 100%; height: 100%;border-radius: 19px;"
+																name="profilePicture">
+															<div id="imagePreview" class="d-none"
+																style="border-radius: 19px;"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-8 col-xl-9">
+												<div class="row g-4">
+													<div class="col-xl-4 col-md-6">
+														<label for="username" class="form-label">User Name</label>
+														<input type="text" class="form-control" id="username"
+															name="username" th:value="${user.username}" readonly>
+													</div>
+													<div class="col-xl-4 col-md-6">
+														<label for="first-name" class="form-label">First name</label>
+														<input type="text" class="form-control" id="first-name"
+															th:value="${user.firstName}" name="firstName" readonly>
+													</div>
+													<div class="col-xl-4 col-md-6">
+														<label for="last-name" class="form-label">Last name</label>
+														<input type="text" class="form-control" id="last-name"
+															th:value="${user.lastName}" name="lastName" readonly>
+													</div>
+													<div class="col-xl-4 col-md-6">
+														<label for="organization-email" class="form-label">Email</label>
+														<input type="text" class="form-control" id="organization-email"
+															th:value="${user.email}" name="email" readonly>
+													</div>
+													<div class="col-xl-4 col-md-6">
+														<label for="organization-mobile"
+															class="form-label">Mobile</label>
+														<input type="text" class="form-control" id="organization-mobile"
+															th:value="${user.mobileNum}" name="mobileNum" readonly>
+													</div>
+													<div class="col-xl-4 col-md-6">
+														<label for="select_gender" class="form-label">Gender</label>
+														<select class="selectpicker form-control" id="select_gender"
+															name="gender" disabled>
+															<option value="Male" th:selected="${user.gender==Male}">Male
+															</option>
+															<option value="Female" th:selected="${user.gender==Female}">
+																female
+															</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script href="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	<script th:src="@{/js/jquery.min.js}"></script>
+	<script th:src="@{/js/jquery.dataTables.min.js}"></script>
+	<script th:src="@{/js/dataTables.responsive.min.js}"></script>
+	<script th:src="@{/js/responsive.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/dataTables.bootstrap5.min.js}"></script>
+	<script th:src="@{/js/initializeDataTables.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>
