@@ -1,4 +1,5 @@
 # Arquivos e diretórios do Maven
+target/
 .mvn/
 pom.xml.tag
 pom.xml.releaseBackup
