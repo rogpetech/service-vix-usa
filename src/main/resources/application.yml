@@ -7,16 +7,14 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    #username: kailashsirswal5@gmail.com
-    #password: jmgbgssvabqjkhyx
-    username: greenbaynotification@gmail.com
-    password: xghjmybiwuxjegka
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}
     properties:
       mail:
-       smtp:
-        auth: true
-        starttls: 
-         enable: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   jpa:
     hibernate:
       ddl-auto: update
@@ -25,7 +23,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
   profiles:
-   active: ${SPRING_PROFILES_ACTIVE:dev}
+    active: ${SPRING_PROFILES_ACTIVE}
   thymeleaf:
     enabled: true
     prefix: classpath:/templates/
@@ -39,10 +37,6 @@ spring:
       max-request-size: 1000MB
   mvc:
     mime-type.**.js: application/javascript
-#    active: uat
-#    active: staging
-#    active: prod
-#     active: qa
 
 project:
   product:
@@ -56,11 +50,9 @@ project:
   temp:
     upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/temp
      
-#Admin configuration
 admin:
   baseURL: https://servicevix.rogpe.tech
   
-# JWT Configuration
 jwt:
   secret:
     key: ${JWT_SECRET_KEY}
@@ -68,35 +60,34 @@ jwt:
     time:
       ms: 3600000
 
-# Super admins for application
 super:
   admin:
     count: 2
     
-#Estimate Email Subject
 estimate:
   subject: Estimate Subject
-#Invoice Email Subject
+
 invoice:
   subject: Invoice Subject
   
 server:
-  port : 8081
-#Staff Default Password
+  port: 8081
+
 staff:
-  password: Staff@123
+  password: ${STAFF_DEFAULT_PASSWORD}
     
-#Pre Roles Configuration
 role:
   organization: ORGANIZATION
-#Read files from local directory
+
 resource:
   image:
     path: file:///opt/greenbayenergy/ServiceVixDocs/project_image/
+
 image:
   base:
     path: /opt/greenbayenergy/ServiceVixDocs/project_image/
-#thymeleaf resource config
+
+thymeleaf:
   resources:
     static-locations: file:src/main/resources/static/
     cache:
@@ -107,7 +98,6 @@ image:
     cache: 'false'
     mode: HTML
 
-#Forgot Password message
 forgot-password-message:
-  prefix: Hi we got a request to change your poassword for Service Vix application. We have generated a random password for you that is 
-  suffix: .Now you can login with your account by use this password. Thank You!
+  prefix: Hi we got a request to change your password for Service Vix application. We have generated a random password for you that is 
+  suffix: .Now you can login with your account by using this password. Thank You!
