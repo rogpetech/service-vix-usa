@@ -19,6 +19,8 @@ WORKDIR /app
 
 # Copia o arquivo JAR da fase de construção
 COPY --from=builder /app/target/*.jar /app/app.jar
+RUN chmod +r /app/app.jar
+RUN chmod -R +r /app/static
 
 # Expor a porta que a aplicação vai rodar
 EXPOSE 8080

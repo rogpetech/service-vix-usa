@@ -2,10 +2,10 @@
 	<div class="header-content d-flex align-items-center">
 
 
-		<img id="" class="custmImagelogo"
+		<!-- <img id="" class="custmImagelogo"
 			th:if="${#authentication.principal.dataHelper.loggedInOrganizationProfileURL !=null}"
 			th:src="${(#authentication.principal.dataHelper.loggedInOrganizationProfileURL != null) ? '/project_image/' +#authentication.principal.dataHelper.loggedInOrganizationProfileURL :'No image' }"
-			alt="org logo" />
+			alt="org logo" /> -->
 		<div class="d-md-flex align-items-center" style="margin-left: 8px;"
 			th:if="${#authentication.principal.dataHelper.loggedInOrganizationName!=null}">
 			<h2 class="fw-bold my-0" th:text="${#authentication.principal.dataHelper.loggedInOrganizationName}"></h2>

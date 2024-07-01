@@ -79,6 +79,6 @@ public class ApplicationController extends BaseController {
 	 */
 	@GetMapping("/organization")
 	public String organizationDashboard() {
-		return "/organization/home";
+		return "organization/home";
 	}
 }

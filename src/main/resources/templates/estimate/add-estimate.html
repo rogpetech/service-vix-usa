@@ -1312,10 +1312,10 @@
 																		th:id="${'estimate-table'+(itr.index+1)+'ProductName'+(optionProductItr.index+1)}"
 																		th:value="${optionProduct.product.productName}"
 																		onKeyUp="onSearchType(event)">
-																	<span th:if="${optionProduct.product!=null}"
+																	<!--<span th:if="${optionProduct.product!=null}"
 																		class="icon-span status-capsule requested"
 																		style="border-radius: 10px !important;"
-																		id="estimate-table1inp-cap1">Product</span>
+																		id="estimate-table1inp-cap1">Product</span>-->
 																	<input th:if="${optionProduct.services!=null}"
 																		readonly type="text"
 																		placeholder="Type for search product.."
