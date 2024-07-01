@@ -97,6 +97,9 @@ thymeleaf:
     prefix: file:src/main/resources/templates/
     cache: 'false'
     mode: HTML
+logging:
+  level:
+    root: DEBUG
 
 forgot-password-message:
   prefix: Hi we got a request to change your password for Service Vix application. We have generated a random password for you that is 
