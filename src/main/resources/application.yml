@@ -1,20 +1,27 @@
 spring:
+  main:
+    lazy-initialization: true
   datasource:
-    url: ${SPRING_DATASOURCE_URL}
-    username: ${SPRING_DATASOURCE_USERNAME}
-    password: ${SPRING_DATASOURCE_PASSWORD}
+    url: jdbc:mysql://localhost:3306/service_vix?createDatabaseIfNotExist=true
+    username: root
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${SPRING_MAIL_USERNAME}
-    password: ${SPRING_MAIL_PASSWORD}
+    username: greenbaynotification@gmail.com
+    password: xghjmybiwuxjegka
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
+  cache:
+    type: caffeine
   jpa:
     hibernate:
       ddl-auto: update
@@ -87,20 +94,13 @@ image:
   base:
     path: /opt/greenbayenergy/ServiceVixDocs/project_image/
 
-thymeleaf:
-  resources:
-    static-locations: file:src/main/resources/static/
-    cache:
-      period: '0'
-  thymeleaf:
-    encoding: UTF-8
-    prefix: file:src/main/resources/templates/
-    cache: 'false'
-    mode: HTML
 logging:
   level:
     root: DEBUG
+    # org.thymeleaf: TRACE
+    # org.springframework: DEBUG
+    # org.apache.tomcat: DEBUG
 
 forgot-password-message:
-  prefix: Hi we got a request to change your password for Service Vix application. We have generated a random password for you that is 
+  prefix: Hi we got a request to change your password for Service Vix application. We have generated a random password for you that is
   suffix: .Now you can login with your account by using this password. Thank You!

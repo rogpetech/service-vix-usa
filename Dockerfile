@@ -1,27 +1,20 @@
-# Fase de construção
-FROM maven:3.9.8-eclipse-temurin-17 AS builder
+FROM maven:3.9.8-eclipse-temurin-17-alpine AS builder
 
-# Define o diretório de trabalho no container
 WORKDIR /app
 
-# Copia o arquivo pom.xml e o diretório src para o diretório de trabalho
 COPY pom.xml .
 COPY src ./src
 
-# Constrói a aplicação utilizando o Maven
 RUN mvn clean package -DskipTests
 
-# Fase de execução
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-jdk-alpine
 
-# Define o diretório de trabalho no container
 WORKDIR /app
 
-# Copia o arquivo JAR da fase de construção
 COPY --from=builder /app/target/*.jar /app/app.jar
 
-# Expor a porta que a aplicação vai rodar
 EXPOSE 8080
 
-# Comando para rodar a aplicação
-CMD ["java", "-jar", "/app/app.jar"]
+ENV JAVA_OPTS="-Xms256m -Xmx512m -XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0 -XX:+UseG1GC"
+
+CMD ["sh", "-c", "java $JAVA_OPTS -jar /app/app.jar"]
