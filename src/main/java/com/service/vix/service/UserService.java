@@ -31,7 +31,7 @@ public interface UserService {
 	/**
 	 * This method is used to save/register user
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return CommonResponse<User>
 	 * @param signupRequest
@@ -43,7 +43,7 @@ public interface UserService {
 	/**
 	 * This method is used to login user
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return CommonResponse<Object>
 	 * @param loginRequest
@@ -56,7 +56,7 @@ public interface UserService {
 	/**
 	 * This method is used to get url from given role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 6, 2023
 	 * @return String
 	 * @param strRole
@@ -68,7 +68,7 @@ public interface UserService {
 	/**
 	 * This method is used to rendered user if already logged in
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 6, 2023
 	 * @return String
 	 * @param principal
@@ -78,7 +78,7 @@ public interface UserService {
 	String renderUserIfAlreadyLoggedIn(Principal principal, HttpSession httpSession);
 
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 14, 2023
 	 * @return UserDTO
 	 * @param userName
@@ -90,7 +90,7 @@ public interface UserService {
 	/**
 	 * This method is used to generate a random password and send it on user's email
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 1, 2023
 	 * @return CommonResponse<Boolean>
 	 * @param httpServletRequest
@@ -100,7 +100,7 @@ public interface UserService {
 	 * @exception Description
 	 */
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 1, 2023
 	 * @return CommonResponse<Boolean>
 	 * @param httpServletRequest

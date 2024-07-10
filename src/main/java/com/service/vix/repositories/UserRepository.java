@@ -21,7 +21,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	/**
 	 * This method is used to find user by username
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 1, 2023
 	 * @return Optional<User>
 	 * @param username
@@ -33,7 +33,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	/**
 	 * This method is used to check user exists or not with given username
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 1, 2023
 	 * @return Boolean
 	 * @param username
@@ -45,7 +45,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	/**
 	 * This method is used to check user exists by email
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 1, 2023
 	 * @return Boolean
 	 * @param email
@@ -57,7 +57,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	/**
 	 * This method is used to check any user have super admin role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 1, 2023
 	 * @return List<User>
 	 * @param role
@@ -70,7 +70,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	/**
 	 * This method is used to get user by email
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 2, 2023
 	 * @return Optional<User>
 	 * @param email
@@ -82,7 +82,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	/**
 	 * This method is used to get associated user with given role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @param roleId
 	 * @return

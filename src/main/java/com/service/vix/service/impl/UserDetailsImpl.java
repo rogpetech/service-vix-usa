@@ -72,7 +72,7 @@ public class UserDetailsImpl implements UserDetails {
 	/**
 	 * This method is used to convert Permissions to Granted Authority
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 23, 2023
 	 * @return List<GrantedAuthority>
 	 * @param permissions

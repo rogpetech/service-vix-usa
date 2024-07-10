@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Dec 19, 2023
 */
 package com.service.vix.service;
@@ -24,7 +24,7 @@ public interface RecieveInvoicePaymentService {
 	/**
 	 * This method is used to generate received invoice payment
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Dec 19, 2023
 	 * @return CommonResponse<RecieveInvoicePayment>
 	 * @param recieveInvoicePaymentDTO
@@ -36,7 +36,7 @@ public interface RecieveInvoicePaymentService {
 	/**
 	 * This method is used to get details of received invoice payment by id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Dec 19, 2023
 	 * @return CommonResponse<RecieveInvoicePaymentDTO>
 	 * @param id

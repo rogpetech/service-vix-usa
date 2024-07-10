@@ -32,7 +32,7 @@ public interface ServicesService {
 	/**
 	 * This method is used to add Service
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 24, 2023
 	 * @return CommonResponse<ServiceDTO>
 	 * @param serviceDTO

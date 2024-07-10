@@ -34,7 +34,7 @@ public interface JobMapper {
 	/**
 	 * This method is used to convert Job to JobDTO
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 5, 2023
 	 * @param job
 	 * @return
@@ -44,7 +44,7 @@ public interface JobMapper {
 	/**
 	 * This method is used to convert JobDTO to Job
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 5, 2023
 	 * @param jobDTO
 	 * @return

@@ -19,7 +19,7 @@ public interface ProductService {
 	/**
 	 * This method is used to save product
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 20, 2023
 	 * @return CommonResponse<ProductDTO>
 	 * @param product
@@ -72,7 +72,7 @@ public interface ProductService {
 	/**
 	 * This method is used to find product by given search alphabet
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 22, 2023
 	 * @return List<ProductDTO>
 	 * @param productName

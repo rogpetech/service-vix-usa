@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Nov 1, 2023
 */
 package com.service.vix.controller;
@@ -39,7 +39,7 @@ public class ForgotPassword extends BaseController {
 	/**
 	 * This method is used to open page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 1, 2023
 	 * @return String
 	 * @return
@@ -53,7 +53,7 @@ public class ForgotPassword extends BaseController {
 	/**
 	 * This method is used to send generated password on given email
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 1, 2023
 	 * @return String
 	 * @param request

@@ -32,7 +32,7 @@ public interface RoleMapper {
 	/**
 	 * Add method description here
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param role
 	 * @return
@@ -43,7 +43,7 @@ public interface RoleMapper {
 	/**
 	 * Add method description here
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param roleDTO
 	 * @return

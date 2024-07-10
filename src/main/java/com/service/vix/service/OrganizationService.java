@@ -42,7 +42,7 @@ public interface OrganizationService {
 	/**
 	 * This method is used to update User and organization details
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param userDTO
 	 * @return
@@ -53,7 +53,7 @@ public interface OrganizationService {
 	 * This method is used to check Organization registered with given
 	 * organization-name or not
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 19, 2023
 	 * @return Boolean
 	 * @param orgName

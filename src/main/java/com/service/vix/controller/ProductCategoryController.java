@@ -75,7 +75,7 @@ public class ProductCategoryController extends BaseController {
 	/**
 	 * Add method description here
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 7, 2023
 	 * @param model
 	 * @return

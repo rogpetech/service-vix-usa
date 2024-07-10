@@ -96,7 +96,7 @@ public class JobController extends BaseController {
 	/**
 	 * This method is used to open add-job page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return String
 	 * @param model
@@ -129,7 +129,7 @@ public class JobController extends BaseController {
 	/**
 	 * This method is used to add job
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return String
 	 * @param httpSession
@@ -149,7 +149,7 @@ public class JobController extends BaseController {
 	/**
 	 * This method is used to show job listing page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return String
 	 * @param model
@@ -170,7 +170,7 @@ public class JobController extends BaseController {
 	/**
 	 * This method is used to view job
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return String
 	 * @param operationType
@@ -215,7 +215,7 @@ public class JobController extends BaseController {
 	/**
 	 * This method is used to remove estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return String
 	 * @param jobId
@@ -234,7 +234,7 @@ public class JobController extends BaseController {
 	/**
 	 * This method is used to open update estimate page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 26, 2023
 	 * @return String
 	 * @param estimateId
@@ -278,7 +278,7 @@ public class JobController extends BaseController {
 	/**
 	 * This method is used to update estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return String
 	 * @param httpSession

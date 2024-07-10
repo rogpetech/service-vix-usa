@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Nov 22, 2023
 */
 package com.service.vix.repositories;
@@ -28,7 +28,7 @@ public interface EmailTemplateRepository extends JpaRepository<EmailTemplate, Lo
 	 * This method is used to get Email Template by Organization Id and Email
 	 * Template Type
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 24, 2023
 	 * @return List<EmailTemplate>
 	 * @param organization

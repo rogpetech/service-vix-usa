@@ -31,7 +31,7 @@ public enum Permissions {
 	/**
 	 * This method is used to get Capitalize Permissions
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @return
 	 */

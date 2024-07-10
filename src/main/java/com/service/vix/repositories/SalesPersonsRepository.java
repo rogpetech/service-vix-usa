@@ -14,7 +14,7 @@ public interface SalesPersonsRepository {
 	/**
 	 * This method is used to get Sales persons from Utility
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 14, 2023
 	 * @return List<SalesPerson>
 	 * @return
@@ -25,7 +25,7 @@ public interface SalesPersonsRepository {
 	/**
 	 * This method is used to get sales person by id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 14, 2023
 	 * @return Optional<SalesPerson>
 	 * @param salesPersonId

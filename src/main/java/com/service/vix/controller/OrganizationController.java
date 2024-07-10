@@ -71,7 +71,7 @@ public class OrganizationController extends BaseController {
 	 * This method is used to save organization when we click the submit button of
 	 * add organization
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 1, 2023
 	 * @return String
 	 * @return
@@ -117,7 +117,7 @@ public class OrganizationController extends BaseController {
 	/**
 	 * This method is used to open update Profile Page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param profileId
 	 * @param model
@@ -137,7 +137,7 @@ public class OrganizationController extends BaseController {
 	/**
 	 * This method is used to process update profile form
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param UserDTO
 	 * @param httpSession
@@ -162,7 +162,7 @@ public class OrganizationController extends BaseController {
 	/**
 	 * This method is used to check organization username exists or not
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 19, 2023
 	 * @return Map<Boolean,String>
 	 * @param username
@@ -179,7 +179,7 @@ public class OrganizationController extends BaseController {
 	/**
 	 * This method is used to check organization with organization name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 19, 2023
 	 * @return Map<Boolean,String>
 	 * @param orgName

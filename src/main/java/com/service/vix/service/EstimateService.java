@@ -43,7 +43,7 @@ public interface EstimateService {
 	/**
 	 * This method is used to save Estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 21, 2023
 	 * @return CommonResponse<EstimateDTO>
 	 * @param estimateDTO
@@ -58,7 +58,7 @@ public interface EstimateService {
 	 * This method is used to extract Save Estimate form data like extract multiple
 	 * Option value
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 21, 2023
 	 * @return EstimateDTO
 	 * @param servletRequest
@@ -70,7 +70,7 @@ public interface EstimateService {
 	/**
 	 * This method is used to find enstimate by id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 21, 2023
 	 * @return CommonResponse<EstimateDTO>
 	 * @param estimateId
@@ -82,7 +82,7 @@ public interface EstimateService {
 	/**
 	 * This method is used to send estimate to email
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 20, 2023
 	 * @return CommonResponse<Boolean>
 	 * @param estimateEmailDTO
@@ -97,7 +97,7 @@ public interface EstimateService {
 	/**
 	 * This method is used to remove Estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 26, 2023
 	 * @return CommonResponse<Boolean>
 	 * @param estimateId
@@ -110,7 +110,7 @@ public interface EstimateService {
 	/**
 	 * This method is used to update the estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 27, 2023
 	 * @return CommonResponse<EstimateDTO>
 	 * @param estimateDTO
@@ -123,7 +123,7 @@ public interface EstimateService {
 	/**
 	 * This method is used to change status of estimate and option
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 17, 2023
 	 * @return void
 	 * @param estimateId
@@ -139,7 +139,7 @@ public interface EstimateService {
 	/**
 	 * Get estimates of User's associated Organization
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 4, 2023
 	 * @return CommonResponse<List<EstimateDTO>>
 	 * @param principal
@@ -151,7 +151,7 @@ public interface EstimateService {
 	/**
 	 * Get Logged In User Estimates
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 5, 2023
 	 * @return CommonResponse<List<EstimateDTO>>
 	 * @param userName
@@ -164,7 +164,7 @@ public interface EstimateService {
 	 * This method is used to convert Estimate to job after accept the request by
 	 * client
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 17, 2023
 	 * @return JobDTO
 	 * @param estimateId
@@ -180,7 +180,7 @@ public interface EstimateService {
 	 * This method is used to convert Estimate to invoice after accept the request
 	 * by client
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 4, 2023
 	 * @return InvoiceDTO
 	 * @param jobDTO
@@ -192,7 +192,7 @@ public interface EstimateService {
 	/**
 	 * This method is used to get option details by option id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Oct 18, 2023
 	 * @return Option
 	 * @param optionId

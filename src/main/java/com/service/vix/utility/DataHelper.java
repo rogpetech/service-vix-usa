@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Aug 23, 2023
 */
 package com.service.vix.utility;

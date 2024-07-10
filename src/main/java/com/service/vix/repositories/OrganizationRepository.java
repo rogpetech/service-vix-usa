@@ -17,7 +17,7 @@ public interface OrganizationRepository extends JpaRepository<Organization, Long
 	/**
 	 * This method is used to check organization with given name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 4, 2023
 	 * @return Optional<Organization>
 	 * @param orgName
@@ -29,7 +29,7 @@ public interface OrganizationRepository extends JpaRepository<Organization, Long
 	/**
 	 * This method is used to check organization with given name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 19, 2023
 	 * @return Boolean
 	 * @param orgName

@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Aug 21, 2023
 */
 package com.service.vix.service;
@@ -30,7 +30,7 @@ public interface StaffService {
 	/**
 	 * This method is used to save staff for organization
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 22, 2023
 	 * @return CommonResponse<StaffDTO>
 	 * @param staffDTO
@@ -43,7 +43,7 @@ public interface StaffService {
 	/**
 	 * This method is used to get staff by id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 21, 2023
 	 * @return CommonResponse<StaffDTO>
 	 * @param staffId
@@ -55,7 +55,7 @@ public interface StaffService {
 	/**
 	 * This method is used to get all staff
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 21, 2023
 	 * @return CommonResponse<List<StaffDTO>>
 	 * @param principal
@@ -67,7 +67,7 @@ public interface StaffService {
 	/**
 	 * This method is used to remove staff
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 21, 2023
 	 * @return CommonResponse<Boolean>
 	 * @param staffId
@@ -80,7 +80,7 @@ public interface StaffService {
 	/**
 	 * * This method is used to update staff
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 23, 2023
 	 * @return CommonResponse<StaffDTO>
 	 * @param staffDTO
@@ -101,7 +101,7 @@ public interface StaffService {
 	Map<Boolean, String> getUserByEmail(String email);
 
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 20, 2023
 	 * @return CommonResponse<StaffDTO> 
 	 * @param staffEmailId
@@ -112,7 +112,7 @@ public interface StaffService {
 	CommonResponse<StaffDTO> getStaffByEmail(String staffEmailId);
 
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 20, 2023
 	 * @return String 
 	 * @param staffEmail
@@ -124,7 +124,7 @@ public interface StaffService {
 	String createPassword(String staffEmail, String newPassword);
 
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 20, 2023
 	 * @return void 
 	 * @param staffDTO

@@ -60,7 +60,7 @@ public class ServiceController extends BaseController {
 	/**
 	 * This method is used to open add service page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 26, 2023
 	 * @return String
 	 * @param model
@@ -78,7 +78,7 @@ public class ServiceController extends BaseController {
 	/**
 	 * This method is used to save service
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 27, 2023
 	 * @return String
 	 * @param serviceDTO
@@ -99,7 +99,7 @@ public class ServiceController extends BaseController {
 	/**
 	 * This method is used to save service
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 27, 2023
 	 * @return Boolean
 	 * @param serviceDTO
@@ -123,7 +123,7 @@ public class ServiceController extends BaseController {
 	/**
 	 * This method is used to show service category listing page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 4, 2023
 	 * @return String
 	 * @param model

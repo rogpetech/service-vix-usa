@@ -36,7 +36,7 @@ public interface ServiceCategoryRepository extends JpaRepository<ServiceCategory
     
     /**
      * This method is used to get all service categories whose isDeleted is false and associate with organization
-     * @author ritiks
+     * @author rodolfopeixoto
      * @date Sep 5, 2023
      * @return List<ProductCategory> 
      * @param organization

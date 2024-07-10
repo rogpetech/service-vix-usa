@@ -53,7 +53,7 @@ public class WorkForceController extends BaseController {
 	/**
 	 * This Controller is used to open Add work force form
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 9, 2023
 	 * @param model
 	 * @return
@@ -71,7 +71,7 @@ public class WorkForceController extends BaseController {
 	/**
 	 * This method is used to show staff listing page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 9, 2023
 	 * @param model
 	 * @param principal

@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Nov 22, 2023
 */
 package com.service.vix.mapper;
@@ -30,7 +30,7 @@ public interface EmailTemplateMapper {
 	/**
 	 * This method is used to map EmailTemplate to EmailTemplateDTO
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 22, 2023
 	 * @return EmailTemplateDTO
 	 * @param emailTemplate
@@ -43,7 +43,7 @@ public interface EmailTemplateMapper {
 	/**
 	 * This method is used to map EmailTemplateDTO to EmailTemplate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 22, 2023
 	 * @return EmailTemplate
 	 * @param emailTemplateDTO

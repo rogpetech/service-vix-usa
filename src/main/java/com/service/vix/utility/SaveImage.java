@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * This class is used to save File in server directory
  * 
- * @author ritiks
+ * @author rodolfopeixoto
  *
  */
 @Component
@@ -49,7 +49,7 @@ public class SaveImage {
 	/**
 	 * Add method description here
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 7, 2023
 	 * @param imageUtility
 	 * @return

@@ -83,7 +83,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 	/**
 	 * This method is used to parse JWT from upcoming request
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return String
 	 * @param request

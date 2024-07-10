@@ -51,7 +51,7 @@ public class ProfileController extends BaseController {
 	/**
 	 * This method is used to Show User profile Details
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 16, 2023
 	 * @return
 	 */
@@ -68,7 +68,7 @@ public class ProfileController extends BaseController {
 	/**
 	 * This method is used to change password
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 6, 2023
 	 * @return String
 	 * @param request

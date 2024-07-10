@@ -152,7 +152,7 @@ public class ProductController extends BaseController {
 	/**
 	 * This method is used to search Product by name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 22, 2023
 	 * @return List<ProductDTO>
 	 * @param productName

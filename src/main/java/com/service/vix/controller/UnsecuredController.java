@@ -42,7 +42,7 @@ public class UnsecuredController extends BaseController {
 	/**
 	 * This method is used to approve request of the option from client end
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 17, 2023
 	 * @return String
 	 * @param estimateId

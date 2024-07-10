@@ -18,7 +18,7 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 	/**
 	 * This method is used to get Role by role name(Enum)
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param name
 	 * @return
@@ -28,7 +28,7 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 	/**
 	 * This method is used to get Role by role name(String)
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param name
 	 * @return
@@ -38,7 +38,7 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 	/**
 	 * This method is used to check already exist role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param name
 	 * @return
@@ -48,7 +48,7 @@ public interface RoleRepository extends JpaRepository<Role, Long> {
 	/**
 	 * Add method description here
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @return
 	 */

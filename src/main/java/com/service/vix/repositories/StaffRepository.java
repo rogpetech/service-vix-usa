@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Aug 21, 2023
 */
 package com.service.vix.repositories;
@@ -26,7 +26,7 @@ public interface StaffRepository extends JpaRepository<Staff, Long> {
 	 * This method is used to get staffs that is not deleted and also with
 	 * organization id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 2, 2023
 	 * @return List<Staff>
 	 * @param organization

@@ -44,7 +44,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * This method is used to open add-customer page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 8, 2023
 	 * @return String
 	 * @param model
@@ -63,7 +63,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * This method is used to save customer
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 8, 2023
 	 * @return String
 	 * @param customerDTO
@@ -87,7 +87,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * Add method description here
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 22, 2023
 	 * @param customerDTO
 	 * @param request
@@ -109,7 +109,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * This method is used to show customer listing page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 13, 2023
 	 * @return String
 	 * @param model
@@ -126,7 +126,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * This method is used to open edit customer page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 25, 2023
 	 * @param model
 	 * @return
@@ -146,7 +146,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * This method is used to update customers
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 25, 2023
 	 * @param productDTO
 	 * @param categoryImage
@@ -164,7 +164,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * This method is used to search customer
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 14, 2023
 	 * @param customerName
 	 * @return
@@ -178,7 +178,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * This method is used to remove customer
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 26, 2023
 	 * @param customerId
 	 * @param model
@@ -199,7 +199,7 @@ public class CustomerController extends BaseController {
 	/**
 	 * This method is used to find existing register customer email
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 21, 2023
 	 * @return Boolean
 	 * @param email

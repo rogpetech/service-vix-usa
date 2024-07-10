@@ -38,7 +38,7 @@ public interface JobService {
 	/**
 	 * This method is used to create Job
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return CommonResponse<JobDTO>
 	 * @param jobDTO
@@ -53,7 +53,7 @@ public interface JobService {
 	 * This method is used to extract Save Estimate form data like extract multiple
 	 * Option value
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return JobDTO
 	 * @param servletRequest
@@ -65,7 +65,7 @@ public interface JobService {
 	/**
 	 * This method is used to find estimate by id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return CommonResponse<JobDTO>
 	 * @param jobId
@@ -77,7 +77,7 @@ public interface JobService {
 	/**
 	 * This method is used to remove Job
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return CommonResponse<Boolean>
 	 * @param jobId
@@ -90,7 +90,7 @@ public interface JobService {
 	/**
 	 * This method is used to update the job
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return CommonResponse<JobDTO>
 	 * @param jobDTO
@@ -103,7 +103,7 @@ public interface JobService {
 	/**
 	 * Get jobs of User's associated Organization
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return CommonResponse<List<JobDTO>>
 	 * @param principal
@@ -115,7 +115,7 @@ public interface JobService {
 	/**
 	 * Get Logged In User Jobs
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return CommonResponse<List<JobDTO>>
 	 * @param principal

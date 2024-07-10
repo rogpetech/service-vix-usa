@@ -105,7 +105,7 @@ public interface CustomerService {
 
 	/**
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 8, 2023
 	 * @param customer
 	 * @return
@@ -115,7 +115,7 @@ public interface CustomerService {
 	/**
 	 * This method is used to get customers for any organization
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 8, 2023
 	 * @return CommonResponse<List<CustomerDTO>>
 	 * @param principal
@@ -139,7 +139,7 @@ public interface CustomerService {
 	/**
 	 * This method is used to get customer details with invoices
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 28, 2023
 	 * @return CommonResponse<List<CustomerDTO>>
 	 * @param principal

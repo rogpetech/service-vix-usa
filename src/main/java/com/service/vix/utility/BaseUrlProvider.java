@@ -26,7 +26,7 @@ import jakarta.servlet.http.HttpServletRequest;
 	 
 	     /**
 	     * This method is used to provide the base url of the application.
-	     * @author ritiks 
+	     * @author rodolfopeixoto 
 	     * @date 24-Jul-2023 
 	     * @param request
 	     * @return 

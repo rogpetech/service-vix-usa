@@ -42,7 +42,7 @@ public interface InvoiceService {
 	/**
 	 * This method is used for create Invoice
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 7, 2023
 	 * @param invoiceDTO
 	 * @return
@@ -149,7 +149,7 @@ public interface InvoiceService {
 	/**
 	 * This method is used to generate selected estimate products invoice
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 9, 2023
 	 * @return CommonResponse<InvoiceDTO>
 	 * @param datas
@@ -196,7 +196,7 @@ public interface InvoiceService {
 	/**
 	 * This method is used to get details for Receive Invoice Payment Details
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Dec 5, 2023
 	 * @return CommonResponse<RecieveInvoicePaymentDTO>
 	 * @param selectedInvoices

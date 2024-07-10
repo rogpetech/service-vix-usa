@@ -14,7 +14,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging> <!-- Changed from war to jar -->
   <name>ServiceVix</name>
-  <description>This project is created for GreenBayEnergy</description>
+  <description>This project is created for ServiceVix</description>
   <properties>
     <java.version>17</java.version>
   </properties>

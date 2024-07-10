@@ -38,7 +38,7 @@ public interface ProfileService {
 	/**
 	 * This method is used to get logged in user details
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 16, 2023
 	 * @param principal
 	 * @return
@@ -48,7 +48,7 @@ public interface ProfileService {
 	/**
 	 * This method is used to change password
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 6, 2023
 	 * @return CommonResponse<PasswordChangeDTO>
 	 * @param httpServletRequest

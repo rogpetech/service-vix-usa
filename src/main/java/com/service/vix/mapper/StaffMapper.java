@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Aug 21, 2023
 */
 package com.service.vix.mapper;
@@ -25,7 +25,7 @@ public interface StaffMapper {
 	StaffMapper INSTANCE = Mappers.getMapper(StaffMapper.class);
 
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 21, 2023
 	 * @return StaffDTO
 	 * @param staff
@@ -35,7 +35,7 @@ public interface StaffMapper {
 	StaffDTO staffToStaffDTO(Staff staff);
 
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 21, 2023
 	 * @return Staff
 	 * @param staffDTO

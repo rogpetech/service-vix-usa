@@ -41,7 +41,7 @@ public class CommonController extends BaseController {
 	/**
 	 * This method is used to search product and service
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 31, 2023
 	 * @param productAndServiceName
 	 * @return

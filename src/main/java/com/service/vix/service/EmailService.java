@@ -29,7 +29,7 @@ public interface EmailService {
 	/**
 	 * This method is used to send emails with attached attachments
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date 20-Jul-2023
 	 * @return boolean
 	 * @param recipientEmail
@@ -47,7 +47,7 @@ public interface EmailService {
 	/**
 	 * This method is used to send simple email
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 1, 2023
 	 * @return boolean
 	 * @param recipientEmail

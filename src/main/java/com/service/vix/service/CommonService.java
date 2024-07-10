@@ -34,7 +34,7 @@ public interface CommonService {
 	 * This method is a service method that have declaration of the search product
 	 * and service method
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 4, 2023
 	 * @return Map<String,Object>
 	 * @param productServiceName
@@ -47,7 +47,7 @@ public interface CommonService {
 	/**
 	 * This method is used to get Logged in user Organization
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 4, 2023
 	 * @return Organization
 	 * @param principal

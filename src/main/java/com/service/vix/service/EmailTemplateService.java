@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Nov 22, 2023
 */
 package com.service.vix.service;
@@ -31,7 +31,7 @@ public interface EmailTemplateService {
 	/**
 	 * This method is used to save email template
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 22, 2023
 	 * @return CommonResponse<EmailTemplateDTO>
 	 * @param emailTemplateDTO
@@ -46,7 +46,7 @@ public interface EmailTemplateService {
 	/**
 	 * This method is used to get organization email template by template type
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 24, 2023
 	 * @return EmailTemplateDTO
 	 * @param principal
@@ -60,7 +60,7 @@ public interface EmailTemplateService {
 	 * This method is used to get EmailTemplate Details by template type and
 	 * organization
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 25, 2023
 	 * @return EmailTemplateDTO
 	 * @param emailTemplateType

@@ -36,7 +36,7 @@ public interface EstimateRepository extends JpaRepository<Estimate, Long> {
 	/**
 	 * This method is used to find estimate by name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 21, 2023
 	 * @return Optional<Estimate>
 	 * @param customerId
@@ -48,7 +48,7 @@ public interface EstimateRepository extends JpaRepository<Estimate, Long> {
 	/**
 	 * This method is used to get Estimates by user name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 5, 2023
 	 * @return Optional<List<Estimate>>
 	 * @param organization
@@ -63,7 +63,7 @@ public interface EstimateRepository extends JpaRepository<Estimate, Long> {
 	/**
 	 * This method is used to find product associted with estimate.
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 4, 2023
 	 * @return Optional<Estimate>
 	 * @param productId
@@ -76,7 +76,7 @@ public interface EstimateRepository extends JpaRepository<Estimate, Long> {
 	/**
 	 * This method is used to find service associated with estimate.
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 4, 2023
 	 * @return Optional<Estimate>
 	 * @param serviceId
@@ -89,7 +89,7 @@ public interface EstimateRepository extends JpaRepository<Estimate, Long> {
 	/**
 	 * This method is used to get non-deleted estimates
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 7, 2023
 	 * @return List<Estimate>
 	 * @param username

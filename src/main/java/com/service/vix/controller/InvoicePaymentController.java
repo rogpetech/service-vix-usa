@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Nov 27, 2023
 */
 package com.service.vix.controller;
@@ -43,7 +43,7 @@ public class InvoicePaymentController extends BaseController {
 	/**
 	 * This method is used to open receive payment page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 27, 2023
 	 * @return String
 	 * @param model
@@ -62,7 +62,7 @@ public class InvoicePaymentController extends BaseController {
 	 * This method is used to open generate receive payment page for particular
 	 * selected invoice
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 28, 2023
 	 * @return String
 	 * @param data
@@ -83,7 +83,7 @@ public class InvoicePaymentController extends BaseController {
 	/**
 	 * This method is used to open edit payment page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Dec 11, 2023
 	 * @return String
 	 * @return
@@ -97,7 +97,7 @@ public class InvoicePaymentController extends BaseController {
 	/**
 	 * This method is used to open view payment page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Dec 11, 2023
 	 * @return String
 	 * @return

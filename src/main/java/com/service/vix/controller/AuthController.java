@@ -37,7 +37,7 @@ public class AuthController extends BaseController {
 	/**
 	 * This method is used as a handler that handle signin/login request
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 30, 2023
 	 * @return String
 	 * @param loginRequest
@@ -60,7 +60,7 @@ public class AuthController extends BaseController {
 	/**
 	 * This method used as a handler that handle signup/register request
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return ResponseEntity<?>
 	 * @param signUpRequest

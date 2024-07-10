@@ -40,7 +40,7 @@ public class WebSecurityConfig {
 	/**
 	 * This method is used to set that we have used DB for authentication
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return DaoAuthenticationProvider
 	 * @return
@@ -59,7 +59,7 @@ public class WebSecurityConfig {
 	/**
 	 * This method is used to create bean for AuthenticationManager
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return AuthenticationManager
 	 * @param authConfig
@@ -76,7 +76,7 @@ public class WebSecurityConfig {
 	 * This method is used to create bean for passwordEncoder and also set that we
 	 * have used BCryptPasswordEncoder
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return PasswordEncoder
 	 * @return
@@ -93,7 +93,7 @@ public class WebSecurityConfig {
 	 * used form base login and custom login logout functionality. That decides also
 	 * that we have use UsernamePasswordAuthenticationFilter
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return SecurityFilterChain
 	 * @param http

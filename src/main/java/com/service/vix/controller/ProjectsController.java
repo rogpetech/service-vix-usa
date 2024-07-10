@@ -7,7 +7,7 @@
  */
  /**
  * Class Information
- * @author ritiks
+ * @author rodolfopeixoto
  * @version 1.2 - Aug 29, 2023
  */
  package com.service.vix.controller;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 	/**
 	 * This method is used to open project list page
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 29, 2023
 	 * @return String 
 	 * @param model

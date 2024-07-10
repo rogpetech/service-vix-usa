@@ -174,7 +174,7 @@ public class InvoiceController extends BaseController {
 	/**
 	 * This method is used to show list of all isActive invoices
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 8, 2023
 	 * @return String
 	 * @param model
@@ -451,7 +451,7 @@ public class InvoiceController extends BaseController {
 	/**
 	 * This method is used to generate the invoice from view estimate page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 13, 2023
 	 * @return String
 	 * @param data

@@ -15,7 +15,7 @@ public class ApplicationController extends BaseController {
 	/**
 	 * This method is used to handle the request related to super admin dashboard
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return String
 	 * @return
@@ -29,7 +29,7 @@ public class ApplicationController extends BaseController {
 	/**
 	 * This method is used to handle the request related to user dashboard
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return String
 	 * @return
@@ -43,7 +43,7 @@ public class ApplicationController extends BaseController {
 	/**
 	 * This method is used to handle the request related to admin dashboard
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return String
 	 * @return
@@ -57,7 +57,7 @@ public class ApplicationController extends BaseController {
 	/**
 	 * This method is used to handle the request related to mod dashboard
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return String
 	 * @return
@@ -71,7 +71,7 @@ public class ApplicationController extends BaseController {
 	/**
 	 * This method is used to handle the request related to organization dashboard
 	 * 
-	 * @author ritiks
+	 * @author @rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return String
 	 * @return

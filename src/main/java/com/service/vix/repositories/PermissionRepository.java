@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Aug 19, 2023
 */
 package com.service.vix.repositories;
@@ -28,7 +28,7 @@ public interface PermissionRepository extends JpaRepository<Permission, Long> {
 	/**
 	 * Get Permissions by Role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 21, 2023
 	 * @return List<Permission>
 	 * @param role

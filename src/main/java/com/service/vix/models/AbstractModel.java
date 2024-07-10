@@ -50,7 +50,7 @@ public class AbstractModel {
 	/**
 	 * This method is used to set createdAt by default
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 2, 2023
 	 * @return void
 	 * @exception Description
@@ -67,7 +67,7 @@ public class AbstractModel {
 	/**
 	 * This method is used to set updatedAt by default
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 2, 2023
 	 * @return void
 	 * @exception Description
@@ -81,7 +81,7 @@ public class AbstractModel {
 	/**
 	 * This method is used to get Current user
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 4, 2023
 	 * @return
 	 */

@@ -37,7 +37,7 @@ public class JwtUtils {
 	/**
 	 * This method is used to generate JWT token by given authentication
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return String
 	 * @param authentication
@@ -65,7 +65,7 @@ public class JwtUtils {
 	 * This method is used to generate Secret Key for build JWT token. It will be
 	 * used our secret key that access from application.properties file
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return Key
 	 * @return
@@ -80,7 +80,7 @@ public class JwtUtils {
 	/**
 	 * This method is used to extract username from given JWT tooken
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return String
 	 * @param token
@@ -95,7 +95,7 @@ public class JwtUtils {
 	/**
 	 * This method is used to validate JWT token
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return boolean
 	 * @param authToken

@@ -19,7 +19,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	/**
 	 * This method is used to get customer by customer name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 8, 2023
 	 * @return Optional<Customer>
 	 * @param customerName
@@ -31,7 +31,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	/**
 	 * This method is used to find customer by keyword
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 12, 2023
 	 * @return List<Customer>
 	 * @param customerName
@@ -44,7 +44,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	/**
 	 * This method is used to find customer by keyword
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 12, 2023
 	 * @return List<Customer>
 	 * @param customerName
@@ -57,7 +57,7 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	/**
 	 * This method is used to get Deleted False Customers
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 8, 2023
 	 * @return List<Customer>
 	 * @param organization

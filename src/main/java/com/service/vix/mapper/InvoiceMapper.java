@@ -35,7 +35,7 @@ public interface InvoiceMapper {
 	/**
 	 * This method is used to convert invoiceDTO object to invoice
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 7, 2023
 	 * @param invoiceDTO
 	 * @return
@@ -46,7 +46,7 @@ public interface InvoiceMapper {
 	/**
 	 * This method is used to convert invoice object to invoice DTO
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 7, 2023
 	 * @param invoice
 	 * @return

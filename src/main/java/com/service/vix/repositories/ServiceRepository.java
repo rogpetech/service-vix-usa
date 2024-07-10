@@ -43,7 +43,7 @@ public interface ServiceRepository extends JpaRepository<Services, Long> {
 	/**
 	 * This method is used to search service by given product name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 26, 2023
 	 * @return List<Services>
 	 * @param serviceName
@@ -66,7 +66,7 @@ public interface ServiceRepository extends JpaRepository<Services, Long> {
 	/**
 	 * This method is used to get all Services whose isDeleted is false
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 27, 2023
 	 * @return List<Services>
 	 * @param organization
@@ -78,7 +78,7 @@ public interface ServiceRepository extends JpaRepository<Services, Long> {
 	/**
 	 * This method is used for check service category attached with service or not
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 2, 2023
 	 * @param serviceCategory
 	 * @return

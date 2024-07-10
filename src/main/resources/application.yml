@@ -30,7 +30,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
   profiles:
-    active: ${SPRING_PROFILES_ACTIVE}
+    active: prod
   thymeleaf:
     enabled: true
     prefix: classpath:/templates/
@@ -56,13 +56,13 @@ project:
     upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/user
   temp:
     upload-dir: /opt/greenbayenergy/ServiceVixDocs/project_image/temp
-     
+
 admin:
   baseURL: https://servicevix.rogpe.tech
-  
+
 jwt:
   secret:
-    key: ${JWT_SECRET_KEY}
+    key: MbQeThWmZq4t7w!z==========S3r^!seV|x
   expiration:
     time:
       ms: 3600000
@@ -70,19 +70,19 @@ jwt:
 super:
   admin:
     count: 2
-    
+
 estimate:
   subject: Estimate Subject
 
 invoice:
   subject: Invoice Subject
-  
+
 server:
   port: 8081
 
 staff:
-  password: ${STAFF_DEFAULT_PASSWORD}
-    
+  password: Staff@123
+
 role:
   organization: ORGANIZATION
 

@@ -60,7 +60,7 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 	/**
 	 * This method is used to get max invoice number
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 21, 2023
 	 * @return Long
 	 * @return
@@ -72,7 +72,7 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 	/**
 	 * This method is used to get max invoice ifd
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 27, 2023
 	 * @return Long
 	 * @return
@@ -103,7 +103,7 @@ public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 	/**
 	 * This method is used to get All invoices of customer
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 28, 2023
 	 * @return List<Invoice>
 	 * @param customer

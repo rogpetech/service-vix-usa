@@ -35,7 +35,7 @@ public class BaseController {
 	/**
 	 * This method is used to handle exceptions for all the controllers
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 15, 2023
 	 * @return ResponseEntity<String>
 	 * @param ex

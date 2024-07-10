@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author @rodolfopeixoto
 * @version 1.2 - Sep 1, 2023
 */
 package com.service.vix.config;
@@ -24,7 +24,7 @@ public class ResourceConfig implements WebMvcConfigurer {
 	private String path;
 
 	/**
-	 * @author rajeshy3
+	 * @author @rodolfopeixoto
 	 * @date April 8, 2021 Initializes resource handler method for project image
 	 *       from from the path mention.
 	 */

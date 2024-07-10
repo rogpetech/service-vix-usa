@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Nov 22, 2023
 */
 package com.service.vix.service.impl;
@@ -58,7 +58,7 @@ public class EmailTemplateServiceImpl implements EmailTemplateService {
 	 * This method is used to convert all the identifiers of email template into
 	 * it's actual value
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 25, 2023
 	 * @return EmailTemplateDTO
 	 * @param organization

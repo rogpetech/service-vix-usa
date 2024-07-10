@@ -33,7 +33,7 @@ public interface RoleService {
 	/**
 	 * This method is used to save roles
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param roleDTO
 	 * @return
@@ -43,7 +43,7 @@ public interface RoleService {
 	/**
 	 * This method is used to get all roles
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @return
 	 */
@@ -52,7 +52,7 @@ public interface RoleService {
 	/**
 	 * This method is used to find role by Id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 18, 2023
 	 * @param roleId
 	 * @return
@@ -62,7 +62,7 @@ public interface RoleService {
 	/**
 	 * This method is used to delete Role by Id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @param roleId
 	 * @param httpSession
@@ -73,7 +73,7 @@ public interface RoleService {
 	/**
 	 * This method is used to update Role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @return CommonResponse<RoleDTO>
 	 * @param roleDTO
@@ -86,7 +86,7 @@ public interface RoleService {
 	/**
 	 * This method is used to extract Role form object from Request
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 21, 2023
 	 * @return RoleDTO
 	 * @param httpServletRequest

@@ -23,7 +23,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	/**
 	 * Add method description here
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 22, 2023
 	 * @param productName
 	 * @return
@@ -33,7 +33,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	/**
 	 * This method is used to search product by given product name
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 22, 2023
 	 * @return List<Product>
 	 * @param productName
@@ -56,7 +56,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	/**
 	 * This method is used to get all products whose isDeleted is false
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 4, 2023
 	 * @return List<Product>
 	 * @param organization
@@ -68,7 +68,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	/**
 	 * This method is used to check product exists by product category
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 2, 2023
 	 * @param productCategory
 	 * @return

@@ -44,7 +44,7 @@ public class RoleController extends BaseController {
 	/**
 	 * This method is used as controller method to save Role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @param roleDTO
 	 * @return
@@ -60,7 +60,7 @@ public class RoleController extends BaseController {
 	/**
 	 * This method is used as controller method to Delete Role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @param roleId
 	 * @param httpSession
@@ -76,7 +76,7 @@ public class RoleController extends BaseController {
 	/**
 	 * This method is used to get Role Details by id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @return RoleDTO
 	 * @param roleId
@@ -92,7 +92,7 @@ public class RoleController extends BaseController {
 	/**
 	 * This method is used to update Role
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 19, 2023
 	 * @return CommonResponse<RoleDTO>
 	 * @param httpServletRequest

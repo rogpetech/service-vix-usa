@@ -7,7 +7,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Aug 21, 2023
 */
 package com.service.vix.controller;
@@ -54,7 +54,7 @@ public class StaffController extends BaseController {
 	/**
 	 * This method is used to save Staff
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 21, 2023
 	 * @return String
 	 * @param staffDTO
@@ -70,7 +70,7 @@ public class StaffController extends BaseController {
 	/**
 	 * This method is used to open update staff page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 22, 2023
 	 * @return String
 	 * @param userId
@@ -89,7 +89,7 @@ public class StaffController extends BaseController {
 	}
 
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 23, 2023
 	 * @return String
 	 * @param staffDTO
@@ -105,7 +105,7 @@ public class StaffController extends BaseController {
 	/**
 	 * This method is used to Remove user
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 23, 2023
 	 * @return String
 	 * @param staffId
@@ -121,7 +121,7 @@ public class StaffController extends BaseController {
 	/**
 	 * This method is used to redirect on update user password page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 18, 2023
 	 * @return String
 	 * @return
@@ -151,7 +151,7 @@ public class StaffController extends BaseController {
 	/**
 	 * This method is used to update password
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 18, 2023
 	 * @return String
 	 * @param passwordDTO

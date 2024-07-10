@@ -79,7 +79,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to open add-estimate page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 20, 2023
 	 * @return String
 	 * @param model
@@ -112,7 +112,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to add estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 22, 2023
 	 * @return String
 	 * @param httpSession
@@ -131,7 +131,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to show estimate listing page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 27, 2023
 	 * @return String
 	 * @param model
@@ -152,7 +152,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to view estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 18, 2023
 	 * @return String
 	 * @param operationType
@@ -192,7 +192,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to generate PDF and send email to customer
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 20, 2023
 	 * @return String
 	 * @param estimateEmailDTO
@@ -215,7 +215,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to remove estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 26, 2023
 	 * @return String
 	 * @param estimateId
@@ -234,7 +234,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to open update estimate page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 26, 2023
 	 * @return String
 	 * @param estimateId
@@ -270,7 +270,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to update estimate
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jul 26, 2023
 	 * @return String
 	 * @param httpSession
@@ -290,7 +290,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to save and send estimate simultaneously
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Jun 22, 2023
 	 * @return Map<String,Object>
 	 * @param httpSession
@@ -329,7 +329,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to update and send estimate simultaneously
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 20, 2023
 	 * @return Map<String,Object>
 	 * @param httpSession
@@ -363,7 +363,7 @@ public class EstimateController extends BaseController {
 	/**
 	 * This method is used to populate option send email details on popup
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 8, 2023
 	 * @return Map<String,Object>
 	 * @param estimateId
@@ -391,7 +391,7 @@ public class EstimateController extends BaseController {
 	 * This method is used to get details related to given estimate and populate it
 	 * on Estimate PDF HTML view
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Sep 15, 2023
 	 * @return Map<String,Object>
 	 * @param estimateId

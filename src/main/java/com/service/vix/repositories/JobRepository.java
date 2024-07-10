@@ -34,7 +34,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 	/**
 	 * This method is used to get User Jobs
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Aug 5, 2023
 	 * @param userName
 	 * @return
@@ -44,7 +44,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 	/**
 	 * This method is used to get non-deleted jobs
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return List<Job>
 	 * @param username
@@ -56,7 +56,7 @@ public interface JobRepository extends JpaRepository<Job, Long> {
 	/**
 	 * This method is used to get organization jobs
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 2, 2023
 	 * @return Optional<List<Estimate>>
 	 * @param organization

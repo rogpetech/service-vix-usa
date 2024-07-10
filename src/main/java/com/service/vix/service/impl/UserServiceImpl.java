@@ -246,7 +246,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * This method is used to check that any user exists by Super Admin role or not
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date May 31, 2023
 	 * @return Boolean
 	 * @return
@@ -397,7 +397,7 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * This method is used to generate password for user
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 1, 2023
 	 * @return char[]
 	 * @param length

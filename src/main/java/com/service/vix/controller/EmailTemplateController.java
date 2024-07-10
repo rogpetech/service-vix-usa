@@ -8,7 +8,7 @@
  */
 /**
 * Class Information
-* @author ritiks
+* @author rodolfopeixoto
 * @version 1.2 - Nov 20, 2023
 */
 package com.service.vix.controller;
@@ -46,7 +46,7 @@ public class EmailTemplateController extends BaseController {
 	/**
 	 * This method is used to open email-template page
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 20, 2023
 	 * @return String
 	 * @return
@@ -61,7 +61,7 @@ public class EmailTemplateController extends BaseController {
 	}
 
 	/**
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 22, 2023
 	 * @return String
 	 * @param emailTemplateDTO
@@ -80,7 +80,7 @@ public class EmailTemplateController extends BaseController {
 	/**
 	 * This method is used to get email template details by organization id
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Nov 24, 2023
 	 * @return EmailTemplateDTO
 	 * @param orgId

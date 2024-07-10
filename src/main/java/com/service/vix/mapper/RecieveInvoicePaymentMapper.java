@@ -38,7 +38,7 @@ public interface RecieveInvoicePaymentMapper {
 	 * This method is used to convert RecieveInvoicePayment DTO object to
 	 * RecieveInvoicePayment
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Dec 19, 2023
 	 * @return Invoice
 	 * @param invoiceDTO
@@ -51,7 +51,7 @@ public interface RecieveInvoicePaymentMapper {
 	 * This method is used to convert RecieveInvoicePayment object to
 	 * RecieveInvoicePayment DTO
 	 * 
-	 * @author ritiks
+	 * @author rodolfopeixoto
 	 * @date Dec 19, 2023
 	 * @return RecieveInvoicePaymentDTO
 	 * @param invoice
