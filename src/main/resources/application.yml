@@ -30,7 +30,7 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
   profiles:
-    active: prod
+    active: ${SPRING_PROFILES_ACTIVE} #prod
   thymeleaf:
     enabled: true
     prefix: classpath:/templates/
@@ -62,7 +62,7 @@ admin:
 
 jwt:
   secret:
-    key: MbQeThWmZq4t7w!z==========S3r^!seV|x
+    key: ${JWT_SECRET_KEY}
   expiration:
     time:
       ms: 3600000
@@ -81,7 +81,7 @@ server:
   port: 8081
 
 staff:
-  password: Staff@123
+  password: ${STAFF_DEFAULT_PASSWORD}
 
 role:
   organization: ORGANIZATION
