@@ -181,70 +181,70 @@ $(document).ready(function() {
 	});
 
 	/*Add Role Button click event handler*/
-	$("#add_role_btn").click(function() {
-		var roleName = $("#role_name").val();
-		if (roleName.length === 0) {
-			$("#role_name_alert").removeClass("d-none");
-		} else {
-			$("#role_name_alert").addClass("d-none");
-			$.ajax({
-				method: 'GET',
-				url: '/role/addRole/' + roleName,
-				success: function(response) {
-					$("#role_name").val('');
-					if (response !== '') {
-						var newRole = `<tr>
-														<th class="dtr-control sorting_1" tabindex="0"><input type="checkbox"></th>
-														<td>`+ response.name + `</td>
-														<td>
-															<span>
-																<button class="table-action-buttons del-btn" type="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModalForRole-`+ response.id + `">
-																	<img src="/assest/trash.svg" class="img-fluid plan-carousel-btn" alt="">
-																</button>
-																<!-- Delete Confirmation Modal -->
-																<div class="modal fade" id="deleteConfirmationModalForRole-`+ response.id + `" tabindex="-1" aria-labelledby="deleteConfirmationLabelForService" aria-hidden="true">
-																	<div class="modal-dialog modal-dialog-centered">
-																		<div class="modal-content">
-																			<!-- Close button -->
-																			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-																			<!-- Modal Body -->
-																			<div class="modal-body">
-																				<h4 class="modal-title" id="deleteConfirmationLabel">Delete
-																					Role
-																				</h4>
-																				<p>Are you sure you want to delete this
-																					Role
-																					?</p>
-																			</div>
-																			<!-- Modal Footer -->
-																			<div class="modal-footer">
-																				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-																				<a href="/role/deleteRole/`+ response.id + `" class="btn btn-danger">Delete</a>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<!-- Delete Confirmation Modal End -->
-															</span>
-														</td>
-													</tr>`;
+	// $("#add_role_btn").click(function() {
+	// 	var roleName = $("#role_name").val();
+	// 	if (roleName.length === 0) {
+	// 		$("#role_name_alert").removeClass("d-none");
+	// 	} else {
+	// 		$("#role_name_alert").addClass("d-none");
+	// 		$.ajax({
+	// 			method: 'POST',
+	// 			url: '/role/addRole/' + roleName,
+	// 			success: function(response) {
+	// 				$("#role_name").val('');
+	// 				if (response !== '') {
+	// 					var newRole = `<tr>
+	// 													<th class="dtr-control sorting_1" tabindex="0"><input type="checkbox"></th>
+	// 													<td>`+ response.name + `</td>
+	// 													<td>
+	// 														<span>
+	// 															<button class="table-action-buttons del-btn" type="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModalForRole-`+ response.id + `">
+	// 																<img src="/assest/trash.svg" class="img-fluid plan-carousel-btn" alt="">
+	// 															</button>
+	// 															<!-- Delete Confirmation Modal -->
+	// 															<div class="modal fade" id="deleteConfirmationModalForRole-`+ response.id + `" tabindex="-1" aria-labelledby="deleteConfirmationLabelForService" aria-hidden="true">
+	// 																<div class="modal-dialog modal-dialog-centered">
+	// 																	<div class="modal-content">
+	// 																		<!-- Close button -->
+	// 																		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	// 																		<!-- Modal Body -->
+	// 																		<div class="modal-body">
+	// 																			<h4 class="modal-title" id="deleteConfirmationLabel">Delete
+	// 																				Role
+	// 																			</h4>
+	// 																			<p>Are you sure you want to delete this
+	// 																				Role
+	// 																				?</p>
+	// 																		</div>
+	// 																		<!-- Modal Footer -->
+	// 																		<div class="modal-footer">
+	// 																			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+	// 																			<a href="/role/deleteRole/`+ response.id + `" class="btn btn-danger">Delete</a>
+	// 																		</div>
+	// 																	</div>
+	// 																</div>
+	// 															</div>
+	// 															<!-- Delete Confirmation Modal End -->
+	// 														</span>
+	// 													</td>
+	// 												</tr>`;
 
-						$('#user-roles-table tr:last').after(newRole);
+	// 					$('#user-roles-table tr:last').after(newRole);
 
-						$("#success_msg").removeClass("d-none");
-						$("#success_msg").addClass("show");
-						$("#successMessage").html('Role Created Successfull.');
-					} else {
-						$("#already_role_ex").removeClass("d-none");
-						$("#already_role_ex").addClass("show");
-					}
-				},
-				error: function(error) {
+	// 					$("#success_msg").removeClass("d-none");
+	// 					$("#success_msg").addClass("show");
+	// 					$("#successMessage").html('Role Created Successfull.');
+	// 				} else {
+	// 					$("#already_role_ex").removeClass("d-none");
+	// 					$("#already_role_ex").addClass("show");
+	// 				}
+	// 			},
+	// 			error: function(error) {
 
-				},
-			});
-		}
-	});
+	// 			},
+	// 		});
+	// 	}
+	// });
 
 	$('#sendEmailEstimateForm').submit(function(event) {
 		// Count the number of checked checkboxes
