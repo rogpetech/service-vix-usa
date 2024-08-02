@@ -40,6 +40,21 @@ The `system.properties` file is used to specify the Java version to be used in y
 java.runtime.version=17
 ```
 
+### Folder Structure Explanation
+- **config**: Contains configuration classes and files for the application. These might include security configurations, CORS configurations, or any other global settings.
+- **controller**: Houses the controller classes that handle incoming HTTP requests and route them to appropriate service methods.
+- **dto**: Data Transfer Objects are used to transfer data between different layers of the application.
+- **enums**: Contains enumerations used across the application, providing a predefined set of constants.
+- **filter**: Contains filter classes used for processing requests and responses, often used for tasks like logging, authentication, and authorization.
+- **mapper**: Holds classes that map between different models or DTOs, often used in converting entities to DTOs and vice versa.
+- **models**: Contains the domain models or entities that represent the data structure of the application.
+- **repositories**: Contains repository interfaces that extend Spring Data JPA to interact with the database.
+- **scheduler**: Houses classes related to scheduling tasks that need to be executed periodically.
+- **service**: Contains service classes where the business logic resides. These classes are called by the controllers to perform specific tasks.
+- **utility**: Holds utility or helper classes that provide common functionality used across different parts of the application.
+- **ServiceVixApplication.java**: The main class of the Spring Boot application, containing the `main` method to run the application.
+
+
 ## Features
 - Authentication and authorization using Spring Security
 - Data persistence with Hibernate
