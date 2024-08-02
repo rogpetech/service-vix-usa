@@ -235,7 +235,7 @@
 														name</label>
 												</div>
 												<div class=" col-md-3">
-													<a class="secondary-btn form-btns me-3" id="add_role_btn"
+													<a class="secondary-btn form-btns me-3" id="add_role_staff_btn"
 														style="height: 45px !important;font-size: initial;">Add Role</a>
 												</div>
 											</div>
@@ -389,6 +389,105 @@
 		<script src="https://cdn.jsdelivr.net/npm/apexcharts@latest"></script>
 		<script th:src="@{/js/slimselect.js}"></script>
 		<script th:src="@{/js/main.js}"></script>
+		<script>
+			$(document).ready(function() {
+    var isRequestPending = false;
+
+    $("#add_role_staff_btn").click(function() {
+        if (isRequestPending) {
+            return;
+        }
+
+        var roleName = $("#role_name").val().trim();
+        if (!roleName) {
+            $("#role_name_alert").removeClass("d-none");
+            return;
+        } else {
+            $("#role_name_alert").addClass("d-none");
+        }
+
+        // Check for duplicate role on client side
+        var duplicateRole = false;
+        $('#user-roles-table td').each(function() {
+            if ($(this).text().trim().toLowerCase() === roleName.toLowerCase()) {
+                duplicateRole = true;
+                return false; // Exit loop
+            }
+        });
+
+        if (duplicateRole) {
+            $("#already_role_ex").removeClass("d-none");
+            $("#already_role_ex").addClass("show");
+            return; // Don't proceed with AJAX request
+        }
+
+        // Disable button to avoid multiple requests
+        var $button = $(this);
+        $button.prop('disabled', true);
+        $button.text('Adding...'); // Visual indicator
+
+        isRequestPending = true;
+
+        $.ajax({
+            url: '/role/addRole/' + roleName, // Adjust the endpoint as necessary
+            method: 'POST',
+            success: function(response) {
+                if (response && response.name) {
+                    var newRole = `<tr>
+                        <th class="dtr-control sorting_1" tabindex="0"><input type="checkbox"></th>
+                        <td>` + response.name + `</td>
+                        <td>
+                            <span>
+                                <button class="table-action-buttons del-btn" type="button" data-bs-toggle="modal" data-bs-target="#deleteConfirmationModalForRole-` + response.id + `">
+                                    <img src="/assest/trash.svg" class="img-fluid plan-carousel-btn" alt="">
+                                </button>
+                                <div class="modal fade" id="deleteConfirmationModalForRole-` + response.id + `" tabindex="-1" aria-labelledby="deleteConfirmationLabelForService" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <div class="modal-body">
+                                                <h4 class="modal-title" id="deleteConfirmationLabel">Delete Role</h4>
+                                                <p>Are you sure you want to delete this Role?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                <a href="/role/deleteRole/` + response.id + `" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </span>
+                        </td>
+                    </tr>`;
+                    $('#user-roles-table tr:last').after(newRole);
+                    $("#success_msg").removeClass("d-none");
+                    $("#success_msg").addClass("show");
+                    $("#successMessage").html('Role Created Successfully.');
+
+                    // Update the role select in permissions
+                    var newOption = `<option value="` + response.id + `">` + response.name + `</option>`;
+                    $("#permissions_role_select").append(newOption);
+                } else {
+                    $("#already_role_ex").removeClass("d-none");
+                    $("#already_role_ex").addClass("show");
+                }
+            },
+            error: function(error) {
+                console.error('Error', error);
+                $("#errorMessage").text('Error adding role: ' + error.responseText);
+                $("#error_msg").removeClass("d-none");
+            },
+            complete: function() {
+                // Re-enable the button after request completion
+                $button.prop('disabled', false);
+                $button.text('Add Role');
+                isRequestPending = false;
+            }
+        });
+    });
+});
+
+			</script>
 </body>
 
 </html>

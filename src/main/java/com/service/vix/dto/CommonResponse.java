@@ -16,4 +16,8 @@ public class CommonResponse<T> {
 	private int status;
 	private T data;
 
+	public T getData() {
+		return data;
+}
+
 }
