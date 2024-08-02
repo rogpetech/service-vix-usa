@@ -17,11 +17,14 @@
  */
 package com.service.vix.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -50,7 +53,7 @@ public class RoleController extends BaseController {
 	 * @return
 	 */
 	@ResponseBody
-	@GetMapping("/addRole/{roleName}")
+	@PostMapping("/addRole/{roleName}")
 	public RoleDTO processAddRole(@PathVariable String roleName, HttpSession httpSession) {
 		log.info("Enter inside RoleController.processAddRole() method.");
 		RoleDTO roleDTO = this.roleService.saveRole(new RoleDTO(roleName), httpSession).getData();
@@ -106,6 +109,12 @@ public class RoleController extends BaseController {
 		RoleDTO extractedRoleObj = this.roleService.extractRoleFormObject(httpServletRequest);
 		CommonResponse<RoleDTO> updatedRole = this.roleService.updateRole(extractedRoleObj, httpSession);
 		return updatedRole;
+	}
+
+	@GetMapping("/api/roles")
+	@ResponseBody
+	public CommonResponse<List<RoleDTO>> getRoles() {
+		return roleService.getRoles();
 	}
 
 }

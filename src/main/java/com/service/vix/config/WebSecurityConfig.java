@@ -37,15 +37,6 @@ public class WebSecurityConfig {
 		return new AuthTokenFilter();
 	}
 
-	/**
-	 * This method is used to set that we have used DB for authentication
-	 * 
-	 * @author @rodolfopeixoto
-	 * @date May 31, 2023
-	 * @return DaoAuthenticationProvider
-	 * @return
-	 * @exception Description
-	 */
 	@Bean
 	public DaoAuthenticationProvider authenticationProvider() {
 		DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
