@@ -10,6 +10,35 @@ Service-VIX-USA is a Java application built with Maven and Spring Boot. It lever
 - Java 17
 - Maven 3.9.8
 - Docker
+  
+## Important Libraries and Tools
+### [Thymeleaf](https://www.thymeleaf.org/)
+Thymeleaf is a modern server-side Java template engine for web and standalone environments. It is used for generating HTML/XHTML/XML content. It provides a natural templating approach and integrates seamlessly with Spring.
+
+### Lombok
+Lombok is a Java library that helps to reduce boilerplate code by generating commonly used methods like getters, setters, and constructors using annotations. It simplifies the development process and makes the code more readable.
+
+### JWT (JSON Web Tokens)
+JWT is a compact, URL-safe means of representing claims to be transferred between two parties. It is commonly used for authorization and information exchange in web applications. Understanding JWT is crucial for implementing secure authentication mechanisms.
+
+### jQuery
+jQuery is a fast, small, and feature-rich JavaScript library. It simplifies tasks such as HTML document traversal and manipulation, event handling, and animation. In this project, it is used to enhance the interactivity of web pages.
+
+### `pom.xml`
+The `pom.xml` file is the core of a project's configuration in Maven. It contains information about the project and configuration details used by Maven to build the project. It includes dependencies, build plugins, and other project-related settings.
+
+### `Procfile`
+A `Procfile` is a text file in the root directory of your application that explicitly declares what command should be executed to start your app. It is used by Heroku and other platforms for deployment. It typically contains the command to run the application.
+
+### `.env`
+The `.env` file is used to store environment variables, which can be used to configure various aspects of the application without hardcoding them into the codebase. It allows for better management of configuration settings across different environments.
+
+### `system.properties`
+The `system.properties` file is used to specify the Java version to be used in your application. For example:
+
+```properties
+java.runtime.version=17
+```
 
 ## Features
 - Authentication and authorization using Spring Security
@@ -43,6 +72,12 @@ Service-VIX-USA is a Java application built with Maven and Spring Boot. It lever
    mvn spring-boot:run
   ```
 
+4. Open browser:
+
+```sh
+open http://localhost:8081
+```
+
 ## Running Tests
 To run the tests, use the following command:
 ```sh
@@ -56,19 +91,38 @@ mvn test
 │   ├── main
 │   │   ├── java
 │   │   │   └── com
-│   │   │       └── example
-│   │   │           └── servicevixusa
-│   │   │               └── [your Java classes]
+│   │   │       └── service
+│   │   │           └── vix
+│   │   │               └── config
+│   │   │               └── controller
+│   │   │               └── dto
+│   │   │               └── enums
+│   │   │               └── filter
+│   │   │               └── mapper
+│   │   │               └── models
+│   │   │               └── repositories
+│   │   │               └── scheduler
+│   │   │               └── service
+│   │   │               └── utility
+│   │   │               └── ServiceVixApplication.java
 │   │   └── resources
+│   │   │   └── application.yml
+│   │   │   └── templates
+│   │   │       └── invoice
+│   │   │           └── invoices.html 
+│   │   └── webapp
 │   │       └── application.properties
 │   └── test
 │       └── java
 │           └── com
-│               └── example
-│                   └── servicevixusa
-│                       └── [your test classes]
+│               └── service
+│                   └── vix
+│                       └── models
+│                       └── ServiceVixApplicationTests.java
 ├── Dockerfile
 ├── pom.xml
+|── .env
+|── Procfile
 └── README.md
 ```
 
@@ -77,13 +131,19 @@ mvn test
 Configure your application properties in the `src/main/resources/application.properties` file. Here you can set up your database configurations, server port, and other necessary settings.
 
 ## Contributing
-Contributions are welcome! Please clone the repository and create a pull request with your changes.
+We follow [GitFlow](https://www.atlassian.com/br/git/tutorials/comparing-workflows/gitflow-workflow#:~:text=O%20que%20%C3%A9%20Gitflow%3F,por%20Vincent%20Driessen%20no%20nvie.) and use Jira for project management. Please follow the guidelines below when contributing:
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
+1. Clone the Project
+2. Create your Feature Branch (git checkout -b feature/JIRA-ISSUE-CODE)
+3. Commit your Changes (git commit -m 'Add some AmazingFeature')
+4. Push to the Branch (git push origin feature/JIRA-ISSUE-CODE)
 5. Open a Pull Request
+6. Waiting for Code Review and Approve Pull Request
+7. Use git checkout develop and git pull origin develop
+8. Use git checkout -b release/JIRA-ISSUE-CODE
+9. Continue the flow with gitflow
+
+During development, please ensure to document user-facing changes and update the relevant documentation.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
