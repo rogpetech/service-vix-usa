@@ -150,6 +150,18 @@
 											<div class="error-message" id="role-error" style="color: red;"></div>
 										</div>
 
+										<div class="col-md-6 col-xl-3">
+											<label for="password" class="form-label">Password<span
+													style="color:red;">*</span></label>
+											<input type="password" class="form-control" id="password"
+												   name="userDTO.password">
+										</div>
+										<div class="col-md-6 col-xl-3">
+											<label for="confirm-password" class="form-label">Confirm Password<span
+													style="color:red;">*</span></label>
+											<input type="password" class="form-control" id="confirm-password"
+												   name="confirmPassword">
+										</div>
 
 										<p class="mt-5 section-heading">Employment Information</p>
 
@@ -341,14 +353,22 @@
 
 			$("#addStaffForm").submit(function (event) {
 				$(".error-message").empty();
-				debugger;
 				var roleName = $("#select_indus").val();
-
+				var password = $("#password").val().trim().replace(/\s+/g, '');
+				var confirmPassword = $("#confirm-password").val().trim().replace(/\s+/g, '');
 
 				var valid = true;
 				if (roleName === "") {
 					$("#role-error").text("Role is required");
 					valid = false;
+				}
+
+				if (password !== confirmPassword) {
+					$("#confirm-password").next(".error-message").remove();
+					$("#confirm-password").after("<div class='error-message' style='color: red;'>Passwords do not match</div>");
+					valid = false;
+				} else {
+					$("#confirm-password").next(".error-message").remove();
 				}
 
 				if (!valid) {
